@@ -14,20 +14,15 @@ jobs:
       NODE_VERSION: 20
 
     steps:
-      - name: ⬇️ Checkout repository
-        uses: actions/checkout@v3
-
-      - name: 🟢 Setup Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
         with:
-          node-version: ${{ env.NODE_VERSION }}
-          cache: 'pnpm'
-
-      - name: 🔧 Enable Corepack
-        run: corepack enable
-
-      - name: 📥 Install pnpm
-        run: corepack prepare pnpm@8.15.4 --activate
+          version: 9
+          run_install: false
+      - name: Setup Node.JS
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20.14.0
 
       - name: 📦 Install dependencies
         run: pnpm install
