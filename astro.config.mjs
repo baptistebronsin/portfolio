@@ -18,6 +18,7 @@ import rehypeMermaid from 'rehype-mermaid';
 
 // https://astro.build/config
 export default defineConfig({
+  output: 'static',
   integrations: [react(), mdx()],
 
   markdown: {
