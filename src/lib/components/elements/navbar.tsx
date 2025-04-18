@@ -40,6 +40,7 @@ ListItem.displayName = "ListItem"
 
 export default function Navbar() {
   const { theme, setTheme } = useTheme()
+  const [open, setOpen] = React.useState(false)
 
   return (
     <div className="sticky top-0 z-50 w-full p-2 py-3 border-b bg-background/60 backdrop-blur-sm">
@@ -95,15 +96,15 @@ export default function Navbar() {
             </svg>
           </button>
 
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
+          <DropdownMenu open={open} onOpenChange={setOpen}>
+            <DropdownMenuTrigger asChild onClick={() => setOpen(!open)}>
               <Button variant="ghost" size="icon">
                 {theme === 'light' ? <SunIcon className="h-5 w-5" /> :
                   theme === 'dark' ? <MoonIcon className="h-5 w-5" /> :
                     <LaptopIcon className="h-5 w-5" />}
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
+            <DropdownMenuContent align="end" className="w-56">
               <DropdownMenuItem onClick={() => setTheme('light')}>
                 <SunIcon className="mr-2 h-4 w-4" />
                 Light
