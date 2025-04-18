@@ -245,14 +245,18 @@ h6 {
   padding-left: 1.5em;
 }
 
-html .prose .astro-code,
-html .prose .astro-code span:not(.highlighted, .highlighted-word, .diff) * {
+html:not(.dark) .prose .astro-code,
+html:not(.dark) .prose .astro-code span:not(.highlighted, .highlighted-word, .diff) * {
   background-color: var(--muted) !important;
 }
 
 html.dark .prose .astro-code,
-html.dark .prose .astro-code span:not(.highlighted, .highlighted-word, .diff) * {
+html.dark .prose .astro-code * {
   color: var(--shiki-dark) !important;
+}
+
+html.dark .prose .astro-code,
+html.dark .prose>.astro-code {
   background-color: var(--shiki-dark-bg) !important;
 }
 
@@ -313,7 +317,6 @@ html.dark .prose .astro-code span:not(.highlighted, .highlighted-word, .diff) * 
   position: relative;
 
   &.highlighted {
-    background-color: var(--bg-highlight);
 
     &.error {
       background-color: rgba(244, 63, 94, .20);
@@ -340,18 +343,18 @@ html.dark .prose .astro-code span:not(.highlighted, .highlighted-word, .diff) * 
 
   .highlighted-word {
     position: relative;
-    color: white;
+    z-index: 0;
     margin: 0 5px;
 
     &::before {
       content: "";
       position: absolute;
+      z-index: 0;
       left: -5px;
       top: -3px;
       bottom: -3px;
       right: -5px;
       border: 1px solid var(--color-border-tab);
-      background-color: var(--bg-highlight);
       border-radius: 0.25rem;
     }
   }

@@ -50,11 +50,6 @@ export default defineExplainerConfig({
           description: 'Learn markdown syntax and markdown components.',
           href: '/docs/syntax/texts',
         },
-        {
-          label: 'Example',
-          description: 'Example documentation',
-          href: '/docs/example/welcome',
-        },
       ],
     },
     {
