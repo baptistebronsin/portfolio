@@ -58,7 +58,7 @@ export default function Navbar() {
                 if (element.href) {
                   return (
                     <NavigationMenuItem key={element.label}>
-                      <NavigationMenuLink href={element.href} className="px-3 py-2 text-sm font-medium hover:bg-gray-100 rounded-md cursor-pointer">
+                      <NavigationMenuLink href={element.href} className="px-3 py-2 text-sm font-medium hover:bg-muted-foreground rounded-md cursor-pointer">
                         {element.label}
                       </NavigationMenuLink>
                     </NavigationMenuItem>
