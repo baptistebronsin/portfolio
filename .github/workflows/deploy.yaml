@@ -23,10 +23,14 @@ jobs:
           node-version: ${{ env.NODE_VERSION }}
           cache: 'pnpm'
 
+      - name: 🔧 Enable Corepack
+      run: corepack enable
+
+      - name: 📥 Install pnpm
+        run: corepack prepare pnpm@8.15.4 --activate
+
       - name: 📦 Install dependencies
-        run: |
-          corepack enable
-          pnpm install
+        run: pnpm install
 
       - name: 🎭 Install Playwright browsers
         run: pnpm exec playwright install --with-deps
