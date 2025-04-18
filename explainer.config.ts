@@ -9,6 +9,8 @@ export default defineExplainerConfig({
   },
   urls: {
     github: 'https://github.com/LeadcodeDev/explainer',
+    getStarted: '/docs/framework/getting-started',
+    documentation: '/docs/framework/installation'
   },
   docs: {
     framework: {

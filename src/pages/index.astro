@@ -40,13 +40,23 @@ const posts = await getCollection("blog", (post) => {
 
 				<div class="flex flex-col md:flex-row gap-5 w-full">
 					<Button>
-						<RocketIcon className="w-5 h-5" />
-						Get started</Button
-					>
+						<a
+							href={config.urls.getStarted}
+							class="flex items-center gap-2 cursor-pointer"
+						>
+							<RocketIcon className="w-5 h-5" />
+							Get started
+						</a>
+					</Button>
 					<Button>
-						<BookIcon className="w-5 h-5" />
-						Documentation</Button
-					>
+						<a
+							href={config.urls.documentation}
+							class="flex items-center gap-2 cursor-pointer"
+						>
+							<BookIcon className="w-5 h-5" />
+							Documentation
+						</a>
+					</Button>
 					<Button variant="outline">
 						<a
 							href={config.urls.github}

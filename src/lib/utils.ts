@@ -51,6 +51,8 @@ type ExplainerConfig = {
   docs: { [key in CollectionKey]?: ExplainerDocs }
   urls: {
     github?: string
+    getStarted?: string
+    documentation?: string
   },
   navbar: NavbarCollection[],
   blog: ExplainerBlog
