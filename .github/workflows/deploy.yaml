@@ -1,0 +1,44 @@
+name: Astro CI/CD with Playwright & Cloudflare Pages
+
+on:
+  push:
+    branches: [main] # ou "master" selon ton projet
+  pull_request:
+    branches: [main]
+
+jobs:
+  test-and-deploy:
+    runs-on: ubuntu-latest
+
+    env:
+      NODE_VERSION: 20
+
+    steps:
+      - name: ⬇️ Checkout repository
+        uses: actions/checkout@v3
+
+      - name: 🟢 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'pnpm'
+
+      - name: 📦 Install dependencies
+        run: |
+          corepack enable
+          pnpm install
+
+      - name: 🎭 Install Playwright browsers
+        run: pnpm exec playwright install --with-deps
+
+      - name: 🛠️ Build Astro
+        run: pnpm run build
+
+      - name: 🚀 Deploy to Cloudflare Pages
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: ${{ secrets.CLOUDFLARE_PROJECT_NAME }}
+          directory: ./dist
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
