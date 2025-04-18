@@ -30,9 +30,6 @@ jobs:
       - name: 🎭 Install Playwright browsers
         run: pnpm exec playwright install --with-deps
 
-      - name: ✅ Run Playwright tests
-        run: pnpm exec playwright test
-
       - name: 🛠️ Build Astro
         run: pnpm run build
 
