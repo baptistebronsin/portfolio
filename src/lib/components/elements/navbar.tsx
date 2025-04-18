@@ -9,7 +9,7 @@ import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMe
 import { useTheme } from "@/hooks/use-theme"
 import { cn } from "@/utils"
 import config from 'explainer.config'
-import { LaptopIcon, MoonIcon, SunIcon } from "lucide-react"
+import { FileCode2Icon, LaptopIcon, MoonIcon, SunIcon } from "lucide-react"
 import * as React from "react"
 
 const ListItem = React.forwardRef<
@@ -46,10 +46,8 @@ export default function Navbar() {
       <div className="max-w-screen-xl mx-auto flex items-center justify-between">
         {/* Logo and brand */}
         <a href="/" className="flex items-center space-x-2">
-          <svg className="h-6 w-6 text-green-500" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-          </svg>
-          <span className="font-bold text-lg">{config.meta.title}</span>
+          <FileCode2Icon className="size-5 text-primary" />
+          <span className="font-bold text-primary text-lg">{config.meta.title}</span>
         </a>
 
         {/* Desktop Navigation */}

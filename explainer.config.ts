@@ -1,5 +1,5 @@
 import { defineExplainerConfig } from '@/utils'
-import { BookDashedIcon, BookIcon } from 'lucide-react'
+import { CuboidIcon, PencilLineIcon } from 'lucide-react'
 
 export default defineExplainerConfig({
   meta: {
@@ -11,17 +11,17 @@ export default defineExplainerConfig({
     github: 'https://github.com/LeadcodeDev/explainer',
   },
   docs: {
-    main: {
-      icon: BookDashedIcon,
-      label: 'Main',
-      href: '/docs/main/welcome',
-      baseUrl: '/docs/main',
+    framework: {
+      icon: CuboidIcon,
+      label: 'Framework',
+      href: '/docs/framework/getting-started',
+      baseUrl: '/docs/framework',
     },
-    test: {
-      icon: BookIcon,
-      label: 'Test',
-      href: '/docs/test/welcome',
-      baseUrl: '/docs/test',
+    syntax: {
+      icon: PencilLineIcon,
+      label: 'Syntax',
+      href: '/docs/syntax/texts',
+      baseUrl: '/docs/syntax',
     },
   },
   blog: {
@@ -41,14 +41,19 @@ export default defineExplainerConfig({
       label: 'Docs',
       items: [
         {
-          label: 'Main documentation',
-          description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-          href: '/docs/main/welcome',
+          label: 'Framework',
+          description: 'Discover Explainer framework guidelines and usages.',
+          href: '/docs/framework/getting-started',
         },
         {
-          label: 'Test documentation',
-          description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-          href: '/docs/test/welcome',
+          label: 'Syntax',
+          description: 'Learn markdown syntax and markdown components.',
+          href: '/docs/syntax/texts',
+        },
+        {
+          label: 'Example',
+          description: 'Example documentation',
+          href: '/docs/example/welcome',
         },
       ],
     },

@@ -1,7 +1,7 @@
 {
-  "$ref": "#/definitions/blog",
+  "$ref": "#/definitions/syntax",
   "definitions": {
-    "blog": {
+    "syntax": {
       "type": "object",
       "properties": {
         "title": {
@@ -13,16 +13,10 @@
         "permalink": {
           "type": "string"
         },
-        "thumbnail": {
-          "type": "string"
+        "order": {
+          "type": "number"
         },
-        "authors": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "publishedAt": {
+        "icon": {
           "type": "string"
         },
         "$schema": {
@@ -31,7 +25,8 @@
       },
       "required": [
         "title",
-        "description"
+        "description",
+        "order"
       ],
       "additionalProperties": false
     }

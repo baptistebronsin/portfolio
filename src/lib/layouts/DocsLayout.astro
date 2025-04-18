@@ -1,9 +1,10 @@
 ---
 import Separator from "@/components/elements/separator";
-import type { CollectionKey } from "astro:content";
+import type { CollectionKey, z } from "astro:content";
 import { getCollection } from "astro:content";
 import clsx from "clsx";
 import type { icons } from "lucide-react";
+import type { docSchema } from "src/content.config";
 import config from "../../../explainer.config";
 import "../../assets/css/global.css";
 import "../../assets/css/markdown.css";
@@ -16,13 +17,19 @@ const currentCollection = Object.entries(config.docs).find(([key, element]) => {
 
 const currentCollectionKey = currentCollection![0] as CollectionKey;
 const collection = await getCollection(currentCollectionKey);
-const currentCollectionItems = collection.map((item) => {
-	return {
-		label: item.data.title,
-		href: `/docs/${item.collection}/${item.data.permalink}`,
-		icon: item.data.icon,
-	};
-});
+const currentCollectionItems = collection
+	.sort(
+		(a, b) =>
+			(a.data as z.infer<typeof docSchema>).order -
+			(b.data as z.infer<typeof docSchema>).order,
+	)
+	.map((item) => {
+		return {
+			label: item.data.title,
+			href: `/docs/${item.collection}/${item.data.permalink}`,
+			icon: item.data.icon,
+		};
+	});
 ---
 
 <BaseLayout>
