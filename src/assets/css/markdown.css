@@ -313,6 +313,14 @@ html.dark .prose>.astro-code {
   border-radius: 0.5rem;
 }
 
+.prose p {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  text-align: justify;
+  hyphens: auto;
+}
+
+
 .astro-code code {
   display: flex;
   flex-direction: column;

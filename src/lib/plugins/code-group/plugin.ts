@@ -9,7 +9,8 @@ const rehypeCodeGroupReact: Plugin<[], Root> = () => {
       parent: any;
       index: number;
       endIndex: number;
-      labels: string[];
+      labels: string[] | null;
+      languages: string[]
     }[] = [];
 
     // First pass: identify code groups
@@ -22,15 +23,24 @@ const rehypeCodeGroupReact: Plugin<[], Root> = () => {
         node.children[0].type === 'text'
       ) {
         const textContent = node.children[0].value;
-        const match = textContent.match(/^:::code-group\s+labels=\[(.*?)\]$/);
 
-        if (match && parent && typeof index === 'number') {
-          // Found a code-group start, now find the end
-          const labels = match[1].split(',').map(label => label.trim());
+        const matchWithoutLabels = textContent.match(/^:::code-group auto$/);
+        const matchWithLabels = textContent.match(/^:::code-group\s+labels=\[(.*?)\]$/);
 
+        if ((matchWithLabels || matchWithoutLabels) && parent && typeof index === 'number') {
           let endIndex = -1;
+
+          let labels = []
+          let languages: string[] = []
           for (let i = index + 1; i < parent.children.length; i++) {
-            const child = parent.children[i];
+            const child = parent.children[i]
+
+            if (child.type === 'element' && child.tagName === 'pre' &&
+              'properties' in child && child.properties?.dataLanguage) {
+              labels.push(child.properties!.dataLanguage as string)
+              languages.push(child.properties!.dataLanguage as string)
+            }
+
             if (
               child.type === 'element' &&
               child.tagName === 'p' &&
@@ -45,74 +55,62 @@ const rehypeCodeGroupReact: Plugin<[], Root> = () => {
           }
 
           if (endIndex !== -1) {
+            if (matchWithLabels) {
+              matchWithLabels[1].split(',').forEach((label, index) => {
+                if (label.length) {
+                  labels[index] = label.trim()
+                }
+              })
+            }
+
             codeGroups.push({
               parent,
               index,
               endIndex,
-              labels
+              labels,
+              languages
             });
           }
         }
       }
     });
 
-    // Second pass: process code groups
     for (let i = codeGroups.length - 1; i >= 0; i--) {
-      const { parent, index, endIndex, labels } = codeGroups[i];
+      const { parent, index, endIndex, labels: providedLabels, languages: providedLanguages } = codeGroups[i];
 
-      // Extract code blocks
       const codeBlocks = parent.children.slice(index + 1, endIndex)
         .filter((node: any) => node.type === 'element' && node.tagName === 'pre');
 
-      const languages: string[] = [];
       const codes: string[] = [];
+      const extractedLabels: string[] = [];
 
       codeBlocks.forEach((codeBlock: Element) => {
         const codeElement = codeBlock.children[0] as Element;
 
         if (codeElement && codeElement.type === 'element' && codeElement.tagName === 'code') {
-          // Get language from class (e.g., "language-js" -> "js")
-          const className = codeElement.properties?.className as string[] || [];
-          const langClass = className.find(cls => cls.startsWith('language-'));
-          const language = langClass ? langClass.replace('language-', '') : '';
-
-          languages.push(language);
-
-          // Preserve the entire HTML output from Shiki including syntax highlighting
           const codeHtml = toHtml(codeBlock);
           codes.push(codeHtml);
         }
       });
 
-      // Create the MDX JSX element
-      if (languages.length > 0 && codes.length > 0) {
+      const finalLabels = providedLabels || extractedLabels;
+      if (providedLanguages.length > 0 && codes.length > 0) {
         const newNode = {
           type: 'mdxJsxFlowElement',
           name: 'CodeGroupWrapper',
           attributes: [
-            { type: 'mdxJsxAttribute', name: 'labels', value: JSON.stringify(labels) },
-            { type: 'mdxJsxAttribute', name: 'languages', value: JSON.stringify(languages) },
+            { type: 'mdxJsxAttribute', name: 'labels', value: JSON.stringify(finalLabels) },
+            { type: 'mdxJsxAttribute', name: 'languages', value: JSON.stringify(providedLanguages) },
             { type: 'mdxJsxAttribute', name: 'codes', value: JSON.stringify(codes) }
           ],
           children: [],
           data: { _mdxExplicitJsx: true }
         };
 
-        // Replace all nodes from start to end with the new component
         parent.children.splice(index, endIndex - index + 1, newNode);
       }
     }
   };
 };
-
-// Helper function to get text content from a node
-function getTextContent(node: any): string {
-  if (node.type === 'text') {
-    return node.value;
-  } else if (node.children) {
-    return node.children.map(getTextContent).join('');
-  }
-  return '';
-}
 
 export default rehypeCodeGroupReact;
