@@ -62,5 +62,11 @@ export default defineExplainerConfig({
       label: 'Blog',
       href: '/blog',
     },
-  ]
+  ],
+  social: {
+    github: {
+      href: 'https://github.com/LeadcodeDev/explainer',
+      icon: 'mdi:github',
+    },
+  }
 })

@@ -46,6 +46,24 @@ type ExplainerBlog = {
   }
 }
 
+const SocialLink = {
+  github: 'Github',
+  twitter: 'Twitter',
+  linkedin: 'LinkedIn',
+  facebook: 'Facebook',
+  instagram: 'Instagram',
+  youtube: 'YouTube',
+  tiktok: 'TikTok',
+  twitch: 'Twitch',
+} as const
+
+type ExplainerSocial = {
+  [key in keyof typeof SocialLink]?: {
+    href: string
+    icon: string
+  }
+}
+
 type ExplainerConfig = {
   meta: ExplainerMeta
   docs: { [key in CollectionKey]?: ExplainerDocs }
@@ -55,7 +73,8 @@ type ExplainerConfig = {
     documentation?: string
   },
   navbar: NavbarCollection[],
-  blog: ExplainerBlog
+  blog: ExplainerBlog,
+  social: ExplainerSocial
 }
 
 export function defineExplainerConfig(config: ExplainerConfig) {
