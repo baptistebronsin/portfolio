@@ -77,7 +77,7 @@ import config from 'explainer.config'
 
 export default function Footer() {
   return (
-    <footer className="bg-white">
+    <footer>
       <div className="mx-auto max-w-7xl overflow-hidden px-6 py-10 lg:px-8">
         <div className="mt-16 flex justify-center gap-x-10">
           {Object.entries(config.social).map(([key, item]) => (

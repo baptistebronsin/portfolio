@@ -309,6 +309,10 @@ html.dark .prose>.astro-code {
   }
 }
 
+.prose img {
+  border-radius: 0.5rem;
+}
+
 .astro-code code {
   display: flex;
   flex-direction: column;
