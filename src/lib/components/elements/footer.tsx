@@ -93,7 +93,7 @@ export default function Footer() {
             </a>
           ))}
         </div>
-        <p className="mt-10 text-center text-sm/6 text-gray-600">&copy; 2024 Your Company, Inc. All rights reserved.</p>
+        <p className="mt-10 text-center text-sm/6 text-gray-600">&copy; {new Date().getFullYear()} {config.meta.title}, Inc. All rights reserved.</p>
       </div>
     </footer>
   )
