@@ -7,11 +7,11 @@ import {
 	BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import BlogLayout from "@/layouts/BlogLayout.astro";
+import CodeGroupWrapper from "@/plugins/code-group/CodeGroupWrapper.astro";
 import { getCollection, render, type CollectionEntry } from "astro:content";
 import { NewspaperIcon } from "lucide-react";
 import { DateTime } from "luxon";
 import config from "../../../explainer.config";
-
 interface Props {
 	element: CollectionEntry<"blog">;
 }
@@ -168,7 +168,7 @@ const headingTree = buildHeadingTree(availableHeadings);
 		<div class="flex gap-10 w-full">
 			<div class="w-full">
 				<div class="prose">
-					<Content />
+					<Content components={{ CodeGroupWrapper }} />
 				</div>
 			</div>
 			<aside class="hidden xl:block w-64">

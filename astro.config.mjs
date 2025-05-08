@@ -12,14 +12,15 @@ import {
   transformerNotationWordHighlight,
 } from '@shikijs/transformers';
 import tailwindcss from '@tailwindcss/vite';
+import icon from "astro-icon";
 import rehypeCallouts from 'rehype-callouts';
-import rehypeCodeGroup from 'rehype-code-group';
 import rehypeMermaid from 'rehype-mermaid';
+import rehypeCodeGroupReact from './src/lib/plugins/code-group/plugin';
 
 // https://astro.build/config
 export default defineConfig({
   output: 'static',
-  integrations: [react(), mdx()],
+  integrations: [react(), mdx(), icon()],
 
   markdown: {
     shikiConfig: {
@@ -44,19 +45,13 @@ export default defineConfig({
       rehypeMermaid,
       [rehypeCallouts, {
         customClassNames: {
+
           calloutClass: "callout",
           calloutTitleClass: "callout-title",
           calloutContentClass: "callout-content",
         }
       }],
-      [rehypeCodeGroup, {
-        customClassNames: {
-          codeGroupClass: "code-group",
-          tabContainerClass: "tab-container",
-          tabClass: "tab",
-          blockContainerClass: "content-container",
-        }
-      }]
+      rehypeCodeGroupReact
     ],
   },
 

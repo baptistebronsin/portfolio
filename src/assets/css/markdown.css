@@ -257,7 +257,7 @@ html.dark .prose .astro-code * {
 
 html.dark .prose .astro-code,
 html.dark .prose>.astro-code {
-  background-color: var(--shiki-dark-bg) !important;
+  background-color: var(--muted) !important;
 }
 
 .astro-code {
@@ -267,6 +267,10 @@ html.dark .prose>.astro-code {
   font-size: 0.875rem;
   position: relative;
   border: 1px solid var(--color-border-tab) !important;
+
+  .line {
+    font-size: 0.9rem;
+  }
 
   &.has-focused .line:not(.focused) {
     opacity: .7;
@@ -312,11 +316,12 @@ html.dark .prose>.astro-code {
 }
 
 .astro-code .line {
-  padding: 0.1rem 0.5rem;
-  height: 1.5rem;
+  padding: 0 0.5rem;
+  height: 1.6rem;
   position: relative;
 
   &.highlighted {
+    background-color: var(--bg-highlight);
 
     &.error {
       background-color: rgba(244, 63, 94, .20);
@@ -384,43 +389,11 @@ html.dark .prose>.astro-code {
   }
 }
 
-.code-group {
-  margin: 1dvb 0;
-  border-radius: 0.5rem;
-  border: 1px solid var(--color-border-tab);
-  gap: 0 !important;
-
-  .tab-container {
-    display: flex;
-    gap: 0.5rem;
-    background-color: var(--bg-tab-container);
-    border-top-left-radius: 0.5rem;
-    border-top-right-radius: 0.5rem;
-    padding: 0.5rem;
-    border-bottom: 1px solid var(--color-border-tab);
-
-    .tab {
-      border-radius: 0.25rem;
-      border: none !important;
-      padding: 0.2rem 0.5rem;
-      border: 1px solid transparent;
-
-      &.active {
-        background-color: var(--muted) !important;
-        border-color: var(--color-border-tab) !important;
-        font-weight: 500;
-      }
-    }
-  }
-
-  .content-container {
-
-    >* {
-      margin: 0 !important;
-      border-radius: 0 0 initial initial !important;
-      border: none !important;
-    }
-  }
+.code-group .astro-code {
+  margin: 0 !important;
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
+  border: none !important;
 }
 
 .callout {
@@ -433,7 +406,7 @@ html.dark .prose>.astro-code {
   }
 
   &[data-callout="note"] {
-    background-color: color-mix(in oklab, var(--callout-note)10%, transparent);
+    background-color: color-mix(in oklab, var(--callout-note)30%, transparent);
     border: 1px solid color-mix(in oklab, var(--callout-note)25%, transparent);
     color: var(--callout-note);
 
@@ -447,7 +420,7 @@ html.dark .prose>.astro-code {
   }
 
   &[data-callout="success"] {
-    background-color: color-mix(in oklab, var(--callout-success)10%, transparent);
+    background-color: color-mix(in oklab, var(--callout-success)30%, transparent);
     border: 1px solid color-mix(in oklab, var(--callout-success)40%, transparent);
     color: var(--callout-success);
 
@@ -461,7 +434,7 @@ html.dark .prose>.astro-code {
   }
 
   &[data-callout="warning"] {
-    background-color: color-mix(in oklab, var(--callout-warning)10%, transparent);
+    background-color: color-mix(in oklab, var(--callout-warning)30%, transparent);
     border: 1px solid color-mix(in oklab, var(--callout-warning)40%, transparent);
     color: var(--callout-warning);
 
@@ -476,7 +449,7 @@ html.dark .prose>.astro-code {
   }
 
   &[data-callout="error"] {
-    background-color: color-mix(in oklab, var(--callout-error)10%, transparent);
+    background-color: color-mix(in oklab, var(--callout-error)30%, transparent);
     border: 1px solid color-mix(in oklab, var(--callout-error)40%, transparent);
     color: var(--callout-error);
 

@@ -109,22 +109,31 @@ impl User {
 
 ## Group code blocks
 
-Group code blocks can be done with the `::: code-group labels=[<...label>]` syntax.
+Group code blocks can be done with the `:::code-group labels=[...labels]` syntax.
 
 > [!warning] This is a **collapsible** callout
 > Only code blocks can be used in a group.
 
+:::code-group labels=[Without labels, With labels]
 ```
-::: code-group labels=[...labels]
-// First code block
-// Second code block
+:::code-group
+// Code block without labels
 :::
 ```
 
-::: code-group labels=[struct, impl]
+```
+:::code-group labels=[first,, third]
+// First code block (named)
+// Second code block
+// Third code block (named)
+:::
+```
+:::
+
+:::code-group labels=[struct, impl]
 ```rust
 pub struct User {
-  pub firstname: String,
+  pub firstname: String, // [!code highlight]
   pub lastname: String,
 }
 ```

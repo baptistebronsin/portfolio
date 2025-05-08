@@ -11,6 +11,7 @@ import DocsLayout from "@/layouts/DocsLayout.astro";
 import type { CollectionKey } from "astro:content";
 import { getCollection, render, type CollectionEntry } from "astro:content";
 import config from "../../../explainer.config";
+import CodeGroupWrapper from "../../lib/plugins/code-group/CodeGroupWrapper.astro";
 
 interface Props {
 	element: CollectionEntry<"blog">;
@@ -107,7 +108,7 @@ function pascalCase(str: string) {
 				</div>
 
 				<div class="prose">
-					<Content />
+					<Content components={{ CodeGroupWrapper }} />
 				</div>
 			</div>
 
