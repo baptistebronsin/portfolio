@@ -53,6 +53,8 @@ export function CodeGroup(props: CodeGroupProps) {
 }
 
 const icons = {
+  markdown: 'devicon:markdown',
+  mdx: 'devicon:markdown',
   html: 'devicon:html5',
   css: 'devicon:css3',
   javascript: 'devicon:javascript',

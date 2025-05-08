@@ -20,7 +20,7 @@ You should use the frontmatter on top of the file to define the article metadata
 > [!WARNING]
 > The `permalink` property is required. If you modify it, the URL of the article will change.
 
-::: code-group labels=[frontmatter, schema]
+:::code-group labels=[frontmatter, schema]
 ```mdx
 ---
 title: "Article title"
@@ -86,10 +86,10 @@ The `authors` property is an array of author names.
             >
               <span class="absolute inset-0" aria-hidden="true" />
             </a>
-            <p class="font-medium text-(--ui-text) peer-hover:text-(--ui-text-highlighted) transition-colors text-sm">
+            <p class="font-medium text-(--ui-text) peer-hover:text-(--ui-text-highlighted) transition-colors text-sm !p-0">
               {author.name}
             </p>
-            <p class="text-muted-foreground transition-colors text-xs">
+            <p class="text-muted-foreground transition-colors text-xs !p-0">
               @{key}
             </p>
           </div>
@@ -128,7 +128,7 @@ The `authors` property is an object where the key is the author name and the val
 - `avatar` : The author avatar URL.
 - `href` : The author URL.
 
-Ensuite vous pourrez taguer votre utilisateur dans le frontmatter de votre article.
+You can then tag your user in the frontmatter of your article.
 
 ```mdx
 ---
