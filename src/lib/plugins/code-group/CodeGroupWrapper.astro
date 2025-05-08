@@ -1,10 +1,21 @@
 ---
 import { CodeGroup } from "./code-group-component";
+
+interface Props {
+  labels: string;
+  languages: string;
+  codes: string;
+}
+
+const { labels, languages, codes } = Astro.props;
 ---
 
-<CodeGroup
-  client:load
-  labels={Astro.props.labels}
-  languages={Astro.props.languages}
-  codes={Astro.props.codes}
-/>
+<div data-code-group-wrapper>
+  <CodeGroup client:idle labels={labels} languages={languages} codes={codes} />
+</div>
+
+<style>
+  [data-code-group-wrapper] {
+    margin-bottom: 1.5rem;
+  }
+</style>

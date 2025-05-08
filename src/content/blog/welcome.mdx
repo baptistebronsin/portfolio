@@ -8,8 +8,9 @@ authors:
 publishedAt: 2024-01-01:23:00:00
 ---
 
-:::code-group labels=[pnpm,,app.dart, Dockerfile, tailwind.config.ts]
+:read-more{to="/docs/guide/directory-structure/pages/#page-metadata"}
 
+:::code-group labels=[pnpm,,app.dart]
 ```bash
 npm install rehype-code-group
 ```
@@ -24,39 +25,12 @@ impl Foo {
     Self { name }
   }
 }
-```
-
-```dart
-final class Foo {
-  final String name;
-  Foo({required this.name});
-}
-```
-
-```yaml
-docker:
-  image: node:20
-  ports:
-    - "3000:3000"
-  volumes:
-    - .:/app
-```
-
-```typescript
-export const config = {}
-```
-
-```sql
-CREATE TABLE users (
-  id INT PRIMARY KEY,
-  name VARCHAR(255) NOT NULL,
-  email VARCHAR(255) NOT NULL
-);
 ```
 :::
 
-:::code-group labels=[pnpm,,app.dart, Dockerfile]
+:read-more{to="/docs/guide/directory-structure/pages/#page-metadata"}
 
+:::code-group labels=[pnpm,app.dart]
 ```bash
 npm install rehype-code-group
 ```
@@ -71,33 +45,5 @@ impl Foo {
     Self { name }
   }
 }
-```
-
-```dart
-final class Foo {
-  final String name;
-  Foo({required this.name});
-}
-```
-
-```yaml
-docker:
-  image: node:20
-  ports:
-    - "3000:3000"
-  volumes:
-    - .:/app
-```
-
-```typescript
-export const config = {}
-```
-
-```sql
-CREATE TABLE users (
-  id INT PRIMARY KEY,
-  name VARCHAR(255) NOT NULL,
-  email VARCHAR(255) NOT NULL
-);
 ```
 :::

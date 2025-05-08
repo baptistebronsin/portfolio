@@ -2,7 +2,7 @@ import { Icon } from "@iconify/react";
 import clsx from 'clsx';
 import { useState } from 'react';
 
-type CodeGroupProps = {
+export type CodeGroupProps = {
   labels: string;
   languages: string;
   codes: string;

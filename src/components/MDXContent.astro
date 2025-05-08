@@ -1,0 +1,23 @@
+import { components } from './MDXComponents';
+
+interface Props {
+  components?: Record<string, any>;
+}
+
+const { components: propComponents } = Astro.props;
+const allComponents = { ...components, ...propComponents };
+
+<div class="mdx-content">
+  <slot />
+</div>
+
+<style>
+  .mdx-content {
+    max-width: 100%;
+    overflow-x: auto;
+  }
+</style>
+
+<script>
+  // Add any client-side initialization for MDX components if needed
+</script> 

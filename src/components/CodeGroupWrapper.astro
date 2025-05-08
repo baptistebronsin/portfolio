@@ -1,0 +1,24 @@
+import { CodeGroup } from "../lib/plugins/code-group/code-group-component";
+
+interface Props {
+  labels: string;
+  languages: string;
+  codes: string;
+}
+
+const { labels, languages, codes } = Astro.props;
+
+<div class="code-group-wrapper">
+  <CodeGroup 
+    client:idle
+    labels={labels}
+    languages={languages}
+    codes={codes}
+  />
+</div>
+
+<style>
+  .code-group-wrapper {
+    margin-bottom: 1.5rem;
+  }
+</style> 

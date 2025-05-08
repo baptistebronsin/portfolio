@@ -15,12 +15,19 @@ import tailwindcss from '@tailwindcss/vite';
 import icon from "astro-icon";
 import rehypeCallouts from 'rehype-callouts';
 import rehypeMermaid from 'rehype-mermaid';
+import remarkDirective from 'remark-directive';
 import rehypeCodeGroupReact from './src/lib/plugins/code-group/plugin';
+import rehypeReadMoreReact from './src/lib/plugins/read-more/plugin';
+import remarkReadMoreDirective from './src/lib/plugins/read-more/remark-directive';
 
 // https://astro.build/config
 export default defineConfig({
   output: 'static',
-  integrations: [react(), mdx(), icon()],
+  integrations: [
+    react(),
+    mdx(),
+    icon()
+  ],
 
   markdown: {
     shikiConfig: {
@@ -41,17 +48,21 @@ export default defineConfig({
       type: 'shiki',
       excludeLangs: ['mermaid'],
     },
+    remarkPlugins: [
+      remarkDirective,
+      remarkReadMoreDirective
+    ],
     rehypePlugins: [
       rehypeMermaid,
       [rehypeCallouts, {
         customClassNames: {
-
           calloutClass: "callout",
           calloutTitleClass: "callout-title",
           calloutContentClass: "callout-content",
         }
       }],
-      rehypeCodeGroupReact
+      rehypeCodeGroupReact,
+      rehypeReadMoreReact
     ],
   },
 

@@ -12,6 +12,7 @@ import { getCollection, render, type CollectionEntry } from "astro:content";
 import { NewspaperIcon } from "lucide-react";
 import { DateTime } from "luxon";
 import config from "../../../explainer.config";
+import ReadMoreWrapper from "../../lib/plugins/read-more/ReadMoreWrapper.astro";
 interface Props {
 	element: CollectionEntry<"blog">;
 }
@@ -168,7 +169,7 @@ const headingTree = buildHeadingTree(availableHeadings);
 		<div class="flex gap-10 w-full">
 			<div class="w-full">
 				<div class="prose">
-					<Content components={{ CodeGroupWrapper }} />
+					<Content components={{ CodeGroupWrapper, ReadMoreWrapper }} />
 				</div>
 			</div>
 			<aside class="hidden xl:block w-64">
