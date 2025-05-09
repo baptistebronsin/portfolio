@@ -26,7 +26,7 @@ export function HomeBentogrid(props: BentoGridProps) {
         </p>
         <div className="mt-10 grid grid-cols-1 gap-4 sm:mt-16 lg:grid-cols-6 lg:grid-rows-2">
           {firstLine.map((item, index) => (
-            <div className="relative lg:col-span-3">
+            <div key={item.title} className="relative lg:col-span-3">
               <div className="absolute inset-px rounded-lg bg-background max-lg:rounded-t-[2rem]" />
               <div
                 className={clsx(
@@ -68,7 +68,7 @@ export function HomeBentogrid(props: BentoGridProps) {
           ))}
 
           {secondLine.map((item, index) => (
-            <div className="relative lg:col-span-2">
+            <div key={item.title} className="relative lg:col-span-2">
               <div className="absolute inset-px rounded-lg bg-background" />
               <div className="relative flex h-full flex-col overflow-hidden rounded-[calc(theme(borderRadius.lg)+1px)] lg:rounded-bl-[calc(2rem+1px)]">
                 <img
