@@ -11,7 +11,7 @@ import { cn } from "@/utils"
 import config from 'explainer.config'
 import { FileCode2Icon, LaptopIcon, MenuIcon, MoonIcon, SunIcon } from "lucide-react"
 import * as React from "react"
-import { Sheet, SheetContent, SheetFooter, SheetHeader, SheetTitle, SheetTrigger } from '../ui/sheet'
+import { Sheet, SheetContent, SheetDescription, SheetFooter, SheetHeader, SheetTitle, SheetTrigger } from '../ui/sheet'
 
 const ListItem = React.forwardRef<
   React.ComponentRef<"a">,
@@ -129,6 +129,7 @@ export default function Navbar() {
                 <SheetHeader>
                   <SheetTitle>{config.meta.title}</SheetTitle>
                 </SheetHeader>
+                <SheetDescription />
                 <div className="flex flex-col items-start gap-2">
                   <a href="/" className="pt-5 text-sm font-medium hover:bg-accent hover:text-accent-foreground rounded-md cursor-pointer">
                     Home
@@ -136,7 +137,7 @@ export default function Navbar() {
                   {config.navbar.map((element) => {
                     if (element.href) {
                       return (
-                        <a href={element.href} className="text-sm font-medium hover:bg-accent hover:text-accent-foreground rounded-md cursor-pointer">
+                        <a key={element.label} href={element.href} className="text-sm font-medium hover:bg-accent hover:text-accent-foreground rounded-md cursor-pointer">
                           {element.label}
                         </a>
                       )
@@ -147,7 +148,7 @@ export default function Navbar() {
                         <p className="text-sm font-medium">{element.label}</p>
                         <ul className="flex flex-col items-start gap-5 pt-2 pb-5">
                           {element.items?.map((item) => (
-                            <a href={item.href} className="flex flex-col px-3 text-sm font-medium hover:bg-accent hover:text-accent-foreground rounded-md cursor-pointer">
+                            <a key={item.label} href={item.href} className="flex flex-col px-3 text-sm font-medium hover:bg-accent hover:text-accent-foreground rounded-md cursor-pointer">
                               <span>{item.label}</span>
                               <span className="text-xs text-muted-foreground">{item.description}</span>
                             </a>

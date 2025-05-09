@@ -1,5 +1,6 @@
 ---
 import Separator from "@/components/elements/separator";
+import { Icon } from "@iconify/react";
 import type { CollectionKey, z } from "astro:content";
 import { getCollection } from "astro:content";
 import clsx from "clsx";
@@ -8,7 +9,6 @@ import type { docSchema } from "src/content.config";
 import config from "../../../explainer.config";
 import "../../assets/css/global.css";
 import "../../assets/css/markdown.css";
-import LucideIcon from "../components/elements/lucid-icon.astro";
 import BaseLayout from "./BaseLayout.astro";
 
 const currentCollection = Object.entries(config.docs).find(([key, element]) => {
@@ -27,7 +27,7 @@ const currentCollectionItems = collection
 		return {
 			label: item.data.title,
 			href: `/docs/${item.collection}/${item.data.permalink}`,
-			icon: item.data.icon,
+			icon: (item.data as z.infer<typeof docSchema>).icon,
 		};
 	});
 ---
@@ -57,7 +57,11 @@ const currentCollectionItems = collection
 														: "bg-gray-50 dark:bg-gray-800 ring-gray-200 dark:ring-gray-700 text-muted-foreground",
 												)}
 											>
-												<element.icon className="size-4" />
+												<Icon
+													client:only
+													icon={element.icon}
+													className="size-4"
+												/>
 											</div>
 											<span
 												class={clsx(
@@ -88,9 +92,10 @@ const currentCollectionItems = collection
 									>
 										<div class="flex items-center gap-2">
 											{item.icon ? (
-												<LucideIcon
-													name={item.icon as keyof typeof icons}
-													class={clsx(
+												<Icon
+													client:only
+													icon={item.icon as keyof typeof icons}
+													className={clsx(
 														"text-gray-500 dark:text-gray-400 group-hover:text-primary size-5",
 														Astro.url.pathname.startsWith(item.href)
 															? "text-primary"

@@ -1,7 +1,5 @@
 import type { CollectionKey } from 'astro:content'
 import { clsx, type ClassValue } from "clsx"
-import type { LucideProps } from 'lucide-react'
-import type { ForwardRefExoticComponent, RefAttributes } from 'react'
 import { twMerge } from "tailwind-merge"
 
 export function cn(...inputs: ClassValue[]) {
@@ -27,7 +25,7 @@ type ExplainerMeta = {
 }
 
 type ExplainerDocs = {
-  icon: ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>
+  icon: string
   label: string
   href: string
   baseUrl: string

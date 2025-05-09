@@ -1,5 +1,4 @@
 import { defineExplainerConfig } from '@/utils'
-import { CuboidIcon, PencilLineIcon } from 'lucide-react'
 
 export default defineExplainerConfig({
   meta: {
@@ -14,13 +13,13 @@ export default defineExplainerConfig({
   },
   docs: {
     framework: {
-      icon: CuboidIcon,
+      icon: 'lucide:cuboid',
       label: 'Framework',
       href: '/docs/framework/getting-started',
       baseUrl: '/docs/framework',
     },
     syntax: {
-      icon: PencilLineIcon,
+      icon: 'lucide:pencil-line',
       label: 'Syntax',
       href: '/docs/syntax/texts',
       baseUrl: '/docs/syntax',
