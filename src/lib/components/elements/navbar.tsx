@@ -114,11 +114,12 @@ export default function Navbar() {
           </div>
         </div>
 
-        <div className="sm:hidden">
+        <div className="flex items-center gap-2sm:hidden">
+          <ThemeToggle />
           <Sheet>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon">
-                <MenuIcon className="size-5 text-primary" />
+                <MenuIcon className="size-5" />
               </Button>
             </SheetTrigger>
             <SheetContent
