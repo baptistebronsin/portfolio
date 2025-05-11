@@ -33,12 +33,10 @@ export const collections = { foo };
 #### In the `explainer.config.ts` file
 
 ```ts
-import { CuboidIcon } from 'lucide-react'
-
 export default defineExplainerConfig({
   docs: {
     foo: { // [!code ++]
-      icon: CuboidIcon, // [!code ++]
+      icon: 'lucide:cuboid', // [!code ++]
       label: 'Foo', // [!code ++]
       href: '/docs/foo/getting-started', // [!code ++]
       baseUrl: '/docs/foo', // [!code ++]
@@ -61,14 +59,14 @@ Then you need to add the following frontmatter :
 title: Page title
 description: Page description
 permalink: page-slug
-icon: Book
+icon: lucide:book
 ---
 
 Your content here...
 ```
 
 > [!NOTE]
-> the `icon` property is rendering from [`lucide-react`](https://lucide.dev/icons/) icons.
+> The `icon` property is rendering from [`Iconify`](https://iconify.design) icons.
 
 > [!SUCCESS]
 > Your page is automatically added to the `foo` collection.

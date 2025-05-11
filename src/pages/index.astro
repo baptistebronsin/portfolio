@@ -166,9 +166,11 @@ const bentogrid: BentoGridProps = {
 			>
 				<h1 class="text-7xl font-bold text-primary">{header.title}</h1>
 				<p class="text-4xl text-foreground font-bold">{header.subtitle}</p>
-				<p class="text-lg text-foreground font-light">{header.description}</p>
+				<p class="text-lg text-foreground font-light max-w-xl">
+					{header.description}
+				</p>
 
-				<div class="flex flex-col md:flex-row gap-5 w-full">
+				<div class="flex flex-col justify-center md:flex-row gap-5 w-full">
 					{
 						header.actions.map((action) => (
 							<Button>
