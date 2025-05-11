@@ -114,7 +114,7 @@ export default function Navbar() {
           </div>
         </div>
 
-        <div className="flex items-center gap-2sm:hidden">
+        <div className="flex items-center gap-2 sm:hidden">
           <ThemeToggle />
           <Sheet>
             <SheetTrigger asChild>

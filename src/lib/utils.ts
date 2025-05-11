@@ -1,10 +1,17 @@
-import type { CollectionKey } from 'astro:content'
-import { clsx, type ClassValue } from "clsx"
-import { twMerge } from "tailwind-merge"
+import type { CollectionKey } from 'astro:content';
+import { clsx, type ClassValue } from "clsx";
+import { twMerge } from "tailwind-merge";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
+
+export type HeadingNode = {
+  depth: number;
+  slug: string;
+  text: string;
+  children: HeadingNode[];
+};
 
 type NavbarCollection = {
   label: string
