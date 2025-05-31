@@ -69,6 +69,7 @@ export default function ArticleCard(props: Props) {
                   <div
                     data-orientation="horizontal"
                     className="relative flex items-center gap-2"
+                    key={author}
                   >
                     <span className="inline-flex items-center justify-center select-none overflow-hidden rounded-full align-middle size-8 text-base shrink-0 transform transition-transform duration-200">
                       <img

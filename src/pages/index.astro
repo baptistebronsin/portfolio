@@ -29,21 +29,9 @@ const articles = (await getCollection("article", (post) => {
 });
 
 const header = {
-	title: "Baptiste Bronsin - Portfolio",
-	subtitle: "Docs, made easy.",
-	description: "Make elegant documentation for your project with Explainer.",
-	actions: [
-		{
-			label: "Get started",
-			href: config.urls.getStarted,
-			icon: RocketIcon,
-		},
-		{
-			label: "Documentation",
-			href: config.urls.documentation,
-			icon: BookIcon,
-		},
-	],
+	title: "Portfolio of Baptiste Bronsin",
+	subtitle: "An apprentice DevOps Engineer",
+	description: "I'm Baptiste Bronsin, a passionate DevOps Engineer at Polytech Montpellier. I love building tools and automating processes to make development easier and more efficient."
 };
 
 const cards = [
@@ -117,15 +105,15 @@ const bentogrid: BentoGridProps = {
 		<div class="relative flex items-center justify-center min-h-[60vh]">
 			<!-- <BackgroundAnimation client:only /> -->
 			<div
-				class="px-5 sm:px-0 relative z-10 flex flex-col items-center justify-center gap-5 text-center"
+				class="px-5 sm:px-0 relative z-10 flex flex-col items-center justify-center gap-8 sm:gap-4 text-center"
 			>
-				<h1 class="text-7xl font-bold text-primary">{header.title}</h1>
-				<p class="text-4xl text-foreground font-bold">{header.subtitle}</p>
+				<h1 class="text-4xl font-bold text-primary">{header.title}</h1>
+				<h2 class="text-2xl text-foreground font-bold">{header.subtitle}</h2>
 				<p class="text-lg text-foreground font-light max-w-xl">
 					{header.description}
 				</p>
 
-				<div class="flex flex-col justify-center md:flex-row gap-5 w-full">
+				<!-- <div class="flex flex-col justify-center md:flex-row gap-5 w-full">
 					{
 						header.actions.map((action) => (
 							<Button>
@@ -159,12 +147,12 @@ const bentogrid: BentoGridProps = {
 							View on Github
 						</a>
 					</Button>
-				</div>
+				</div> -->
 			</div>
 		</div>
 
 		<div
-			class="max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 px-5 sm:px-0 py-16"
+			class="max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 px-5 md:px-0 py-16"
 		>
 			{
 				cards.map((card) => (

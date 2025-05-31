@@ -9,16 +9,6 @@ export const docSchema = z.object({
   icon: z.string().optional(),
 })
 
-const syntax = defineCollection({
-  loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/docs/syntax" }),
-  schema: docSchema
-})
-
-const framework = defineCollection({
-  loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/docs/framework" }),
-  schema: docSchema
-})
-
 const article = defineCollection({
   loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/articles" }),
   schema: z.object({
@@ -31,4 +21,4 @@ const article = defineCollection({
   }),
 })
 
-export const collections = { article, framework, syntax };
+export const collections = { article };

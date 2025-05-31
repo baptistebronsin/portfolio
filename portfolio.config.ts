@@ -2,14 +2,12 @@ import { defineExplainerConfig } from '@/utils'
 
 export default defineExplainerConfig({
   meta: {
-    title: 'Portfolio',
+    title: 'Baptiste Bronsin',
     description: 'Portfolio de Baptiste Bronsin.',
     thumbnail: 'https://placehold.co/1200x630',
   },
   urls: {
-    github: 'https://github.com/baptistebronsin',
-    getStarted: '/docs/framework/getting-started',
-    documentation: '/docs/framework/installation'
+    github: 'https://github.com/baptistebronsin'
   },
   authors: {
     leadcode_dev: {
@@ -34,6 +32,18 @@ export default defineExplainerConfig({
     }
   },
   navbar: [
+    {
+      label: 'Studies',
+      href: '/#studies',
+    },
+    {
+      label: 'Career',
+      href: '/#career',
+    },
+    {
+      label: 'Projects',
+      href: '/projects',
+    },
     // {
     //   label: 'Docs',
     //   items: [
