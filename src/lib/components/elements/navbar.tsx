@@ -51,7 +51,7 @@ export default function Navbar() {
           <span className="font-bold text-primary text-lg">{config.meta.title}</span>
         </a>
 
-        <div className="hidden lg:flex items-center justify-between w-full">
+        <div className="hidden sm:flex items-center justify-between w-full">
           <a href="/" className="flex items-center space-x-2">
             <FileCode2Icon className="size-5 text-primary" />
             <span className="font-bold text-primary text-lg">{config.meta.title}</span>
