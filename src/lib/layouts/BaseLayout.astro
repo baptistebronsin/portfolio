@@ -11,7 +11,7 @@ const { title = config.meta.title } = Astro.props;
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
     <title>{title}</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -29,7 +29,7 @@ const { title = config.meta.title } = Astro.props;
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
   </head>
-  <body class="relative min-h-screen">
+  <body class="relative min-h-screen border border-[#000000]/0">
     <div class="min-h-screen flex flex-col">
       <Navbar client:only />
       <slot />
