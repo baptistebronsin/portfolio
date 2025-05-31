@@ -1,10 +1,10 @@
 ---
-import BlogCard from "@/components/elements/blog-card";
-import BlogLayout from "@/layouts/BlogLayout.astro";
+import ArticleCard from "@/components/elements/article-card";
+import ArticleLayout from "@/layouts/ArticleLayout.astro";
 import { getCollection } from "astro:content";
 import config from "../../../explainer.config";
 
-const posts = await getCollection("blog", (post) => {
+const articles = await getCollection("article", (post) => {
 	if (import.meta.env.DEV) {
 		return true;
 	}
@@ -13,7 +13,7 @@ const posts = await getCollection("blog", (post) => {
 });
 ---
 
-<BlogLayout>
+<ArticleLayout>
 	<div class="py-24 sm:py-10">
 		<div class="mx-auto max-w-7xl px-6 sm:px-0">
 			<div class="mx-auto max-w-2xl lg:mx-0">
@@ -37,7 +37,7 @@ const posts = await getCollection("blog", (post) => {
 
 	<div class="text-lg sm:text-xl/8 text-(--ui-text-muted) text-pretty mt-6">
 		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-			{posts.map((post) => <BlogCard post={post} />)}
+			{articles.map((article) => <ArticleCard article={article} />)}
 		</div>
 	</div></BlogLayout
 >

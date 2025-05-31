@@ -19,8 +19,8 @@ const framework = defineCollection({
   schema: docSchema
 })
 
-const blog = defineCollection({
-  loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/blog" }),
+const article = defineCollection({
+  loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/articles" }),
   schema: z.object({
     title: z.string(),
     description: z.string(),
@@ -31,4 +31,4 @@ const blog = defineCollection({
   }),
 })
 
-export const collections = { blog, framework, syntax };
+export const collections = { article, framework, syntax };

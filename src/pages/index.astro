@@ -3,7 +3,7 @@ import {
 	HomeBentogrid,
 	type BentoGridProps,
 } from "@/components/elements/home-bentogrid";
-import { HomeBlog } from "@/components/elements/home-blog";
+import { HomeArticle } from "@/components/elements/home-article";
 import {
 	HomeMarquee,
 	type MarqueeProps,
@@ -22,7 +22,7 @@ import { getCollection } from "astro:content";
 import { BookIcon, RocketIcon } from "lucide-react";
 import config from "../../explainer.config";
 
-const posts = await getCollection("blog", (post) => {
+const articles = await getCollection("article", (post) => {
 	if (import.meta.env.DEV) {
 		return true;
 	}
@@ -31,7 +31,7 @@ const posts = await getCollection("blog", (post) => {
 });
 
 const header = {
-	title: "Explainer",
+	title: "Baptiste Bronsin - Portfolio",
 	subtitle: "Docs, made easy.",
 	description: "Make elegant documentation for your project with Explainer.",
 	actions: [
@@ -160,7 +160,7 @@ const bentogrid: BentoGridProps = {
 <Layout>
 	<div>
 		<div class="relative flex items-center justify-center min-h-[60vh]">
-			<BackgroundAnimation client:only />
+			<!-- <BackgroundAnimation client:only /> -->
 			<div
 				class="px-5 sm:px-0 relative z-10 flex flex-col items-center justify-center gap-5 text-center"
 			>
@@ -229,14 +229,14 @@ const bentogrid: BentoGridProps = {
 			<HomeBentogrid {...bentogrid} />
 		</div>
 
-		<div class="max-w-screen-xl mx-auto">
+		<!-- <div class="max-w-screen-xl mx-auto">
 			<HomeMarquee {...marquee} client:visible />
-		</div>
+		</div> -->
 
 		{
-			posts.length && (
+			articles.length && (
 				<div class="max-w-screen-xl mx-auto">
-					<HomeBlog posts={posts} client:visible />
+					<HomeArticle articles={articles} client:visible />
 				</div>
 			)
 		}

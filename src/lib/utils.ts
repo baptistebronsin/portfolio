@@ -38,7 +38,7 @@ type ExplainerDocs = {
   baseUrl: string
 }
 
-type ExplainerBlog = {
+type Article = {
   defaults: {
     thumbnail?: string
   }
@@ -78,7 +78,7 @@ type ExplainerConfig = {
     documentation?: string
   },
   navbar: NavbarCollection[],
-  blog: ExplainerBlog,
+  article: Article,
   social: ExplainerSocial
 }
 

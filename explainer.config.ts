@@ -2,12 +2,12 @@ import { defineExplainerConfig } from '@/utils'
 
 export default defineExplainerConfig({
   meta: {
-    title: 'Explainer',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+    title: 'Portfolio',
+    description: 'Portfolio de Baptiste Bronsin.',
     thumbnail: 'https://placehold.co/1200x630',
   },
   urls: {
-    github: 'https://github.com/LeadcodeDev/explainer',
+    github: 'https://github.com/baptistebronsin',
     getStarted: '/docs/framework/getting-started',
     documentation: '/docs/framework/installation'
   },
@@ -25,7 +25,7 @@ export default defineExplainerConfig({
       baseUrl: '/docs/syntax',
     },
   },
-  blog: {
+  article: {
     defaults: {
       thumbnail: 'https://placehold.co/1200x630',
     },
@@ -54,12 +54,8 @@ export default defineExplainerConfig({
       ],
     },
     {
-      label: 'API',
-      href: '/api',
-    },
-    {
-      label: 'Blog',
-      href: '/blog',
+      label: 'Articles',
+      href: '/articles',
     },
   ],
   social: {

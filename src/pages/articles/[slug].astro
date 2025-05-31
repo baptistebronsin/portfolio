@@ -6,7 +6,7 @@ import {
 	BreadcrumbList,
 	BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import BlogLayout from "@/layouts/BlogLayout.astro";
+import ArticleLayout from "@/layouts/ArticleLayout.astro";
 import CodeGroupWrapper from "@/plugins/code-group/CodeGroupWrapper.astro";
 import { getCollection, render, type CollectionEntry } from "astro:content";
 import { NewspaperIcon } from "lucide-react";
@@ -14,11 +14,11 @@ import { DateTime } from "luxon";
 import config from "../../../explainer.config";
 import ReadMoreWrapper from "../../lib/plugins/read-more/ReadMoreWrapper.astro";
 interface Props {
-	element: CollectionEntry<"blog">;
+	element: CollectionEntry<"article">;
 }
 
 export async function getStaticPaths() {
-	const contents = await getCollection("blog");
+	const contents = await getCollection("article");
 	return contents.map((item) => ({
 		params: { slug: item.data.permalink, publishedAt: item.data.publishedAt },
 		props: { element: item },
@@ -65,7 +65,7 @@ function buildHeadingTree(headings: typeof availableHeadings): HeadingNode[] {
 const headingTree = buildHeadingTree(availableHeadings);
 ---
 
-<BlogLayout>
+<ArticleLayout>
 	<div class="flex flex-col gap-4">
 		<div class="relative border-b py-8">
 			<div
@@ -126,7 +126,7 @@ const headingTree = buildHeadingTree(availableHeadings);
 				<div class="mt-4 flex flex-wrap items-center gap-6">
 					{
 						element.data.authors?.map((key) => {
-							const currentAuthor = config.blog.authors[key];
+							const currentAuthor = config.article.authors[key];
 							return (
 								<div
 									data-orientation="horizontal"

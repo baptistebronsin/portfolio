@@ -1,11 +1,11 @@
 import type { CollectionEntry } from 'astro:content'
-import BlogCard from './blog-card'
+import ArticleCard from './article-card'
 
 type Props = {
-  posts: CollectionEntry<"blog">[]
+  articles: CollectionEntry<"article">[]
 }
 
-export function HomeBlog(props: Props) {
+export function HomeArticle(props: Props) {
   return (
     <div className="bg-background py-24 sm:py-32">
       <div className="mx-auto max-w-2xl px-6 lg:max-w-7xl lg:px-8">
@@ -16,7 +16,7 @@ export function HomeBlog(props: Props) {
           See the latest blog posts and follow us
         </p>
         <div className="mt-10 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {props.posts.map((post) => <BlogCard key={post.data.permalink} post={post} />)}
+          {props.articles.map((article) => <ArticleCard key={article.data.permalink} article={article} />)}
         </div>
       </div>
     </div>

@@ -11,5 +11,6 @@ export default new Map([
 ["src/content/docs/syntax/alert.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fdocs%2Fsyntax%2Falert.mdx&astroContentModuleFlag=true")],
 ["src/content/docs/syntax/code-block.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fdocs%2Fsyntax%2Fcode-block.mdx&astroContentModuleFlag=true")],
 ["src/content/docs/syntax/markdown.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fdocs%2Fsyntax%2Fmarkdown.mdx&astroContentModuleFlag=true")],
-["src/content/docs/syntax/text.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fdocs%2Fsyntax%2Ftext.mdx&astroContentModuleFlag=true")]]);
+["src/content/docs/syntax/text.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fdocs%2Fsyntax%2Ftext.mdx&astroContentModuleFlag=true")],
+["src/content/articles/welcome.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Farticles%2Fwelcome.mdx&astroContentModuleFlag=true")]]);
 		
