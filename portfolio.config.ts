@@ -25,16 +25,26 @@ export default defineExplainerConfig({
       baseUrl: '/docs/syntax',
     },
   },
-  article: {
-    defaults: {
-      thumbnail: 'https://placehold.co/1200x630',
+  authors: {
+    leadcode_dev: {
+      name: 'LeadcodeDev',
+      avatar: 'https://avatars.githubusercontent.com/u/8946317?v=4',
+      href: 'https://github.com/LeadcodeDev',
     },
-    authors: {
-      leadcode_dev: {
-        name: 'LeadcodeDev',
-        avatar: 'https://avatars.githubusercontent.com/u/8946317?v=4',
-        href: 'https://github.com/LeadcodeDev',
-      },
+    baptiste_bronsin: {
+      name: 'Baptiste Bronsin',
+      avatar: 'https://avatars.githubusercontent.com/u/79365734?v=4&size=64',
+      href: 'https://github.com/baptistebronsin'
+    },
+    courtcircuits: {
+      name: 'Tristan Radulescu',
+      avatar: 'https://avatars.githubusercontent.com/u/90451752?v=4',
+      href: 'https://github.com/Courtcircuits'
+    },
+    stheoulle: {
+      name: 'Sarah Theoulle',
+      avatar: 'https://avatars.githubusercontent.com/u/106761192?v=4',
+      href: 'https://github.com/stheoulle'
     }
   },
   navbar: [

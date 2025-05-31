@@ -27,7 +27,7 @@ const article = defineCollection({
     permalink: z.string().optional(),
     thumbnail: z.string().optional(),
     authors: z.array(z.string()).optional(),
-    publishedAt: z.string().optional()
+    publishedAt: z.date().optional()
   }),
 })
 

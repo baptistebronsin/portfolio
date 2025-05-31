@@ -11,7 +11,7 @@ import CodeGroupWrapper from "@/plugins/code-group/CodeGroupWrapper.astro";
 import { getCollection, render, type CollectionEntry } from "astro:content";
 import { NewspaperIcon } from "lucide-react";
 import { DateTime } from "luxon";
-import config from "../../../explainer.config";
+import config from "../../../portfolio.config";
 import ReadMoreWrapper from "../../lib/plugins/read-more/ReadMoreWrapper.astro";
 interface Props {
 	element: CollectionEntry<"article">;
@@ -20,7 +20,7 @@ interface Props {
 export async function getStaticPaths() {
 	const contents = await getCollection("article");
 	return contents.map((item) => ({
-		params: { slug: item.data.permalink, publishedAt: item.data.publishedAt },
+		params: { slug: item.data.permalink, publishedAt: item.data.publishedAt ? new Date(item.data.publishedAt).toDateString() : null },
 		props: { element: item },
 	}));
 }
@@ -105,7 +105,7 @@ const headingTree = buildHeadingTree(availableHeadings);
 								<time>
 									{DateTime.fromJSDate(
 										new Date(element.data.publishedAt),
-									).toFormat("dd/MM/yyyy HH:mm")}
+									).toFormat("dd/MM/yyyy")}
 								</time>
 							</span>
 						</div>
@@ -126,7 +126,7 @@ const headingTree = buildHeadingTree(availableHeadings);
 				<div class="mt-4 flex flex-wrap items-center gap-6">
 					{
 						element.data.authors?.map((key) => {
-							const currentAuthor = config.article.authors[key];
+							const currentAuthor = config.authors[key];
 							return (
 								<div
 									data-orientation="horizontal"

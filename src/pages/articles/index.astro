@@ -2,14 +2,16 @@
 import ArticleCard from "@/components/elements/article-card";
 import ArticleLayout from "@/layouts/ArticleLayout.astro";
 import { getCollection } from "astro:content";
-import config from "../../../explainer.config";
+import config from "../../../portfolio.config";
 
-const articles = await getCollection("article", (post) => {
+const articles = (await getCollection("article", (post) => {
 	if (import.meta.env.DEV) {
 		return true;
 	}
 
 	return post.data.publishedAt && new Date(post.data.publishedAt) <= new Date();
+})).sort((a, b) => {
+	return a.data.publishedAt && b.data.publishedAt ? new Date(b.data.publishedAt).getTime() - new Date(a.data.publishedAt).getTime() : 0;
 });
 ---
 
@@ -17,19 +19,15 @@ const articles = await getCollection("article", (post) => {
 	<div class="py-24 sm:py-10">
 		<div class="mx-auto max-w-7xl px-6 sm:px-0">
 			<div class="mx-auto max-w-2xl lg:mx-0">
-				<p class="text-base/7 font-semibold text-primary">
-					Get the help you need
-				</p>
 				<h2
 					class="mt-2 text-5xl font-semibold tracking-tight text-gray-900 sm:text-5xl"
 				>
-					The {config.meta.title} Blog
+					The Baptiste articles
 				</h2>
 				<p
 					class="text-lg sm:text-xl/8 text-muted-foreground text-pretty font-light mt-6"
 				>
-					Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem
-					cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat.
+					In this section, I will share my discoveries, thoughts, and insights on various topics that I find interesting.
 				</p>
 			</div>
 		</div>

@@ -8,7 +8,7 @@ import {
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger } from "@/components/ui/navigation-menu"
 import { useTheme } from "@/hooks/use-theme"
 import { cn } from "@/utils"
-import config from 'explainer.config'
+import config from 'portfolio.config'
 import { FileCode2Icon, LaptopIcon, MenuIcon, MoonIcon, SunIcon } from "lucide-react"
 import * as React from "react"
 import { Sheet, SheetContent, SheetDescription, SheetFooter, SheetHeader, SheetTitle, SheetTrigger } from '../ui/sheet'

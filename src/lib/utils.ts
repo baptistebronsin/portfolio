@@ -38,19 +38,6 @@ type ExplainerDocs = {
   baseUrl: string
 }
 
-type Article = {
-  defaults: {
-    thumbnail?: string
-  }
-  authors: {
-    [key: string]: {
-      name: string
-      avatar: string
-      href: string
-    }
-  }
-}
-
 const SocialLink = {
   github: 'Github',
   twitter: 'Twitter',
@@ -78,7 +65,13 @@ type ExplainerConfig = {
     documentation?: string
   },
   navbar: NavbarCollection[],
-  article: Article,
+  authors: {
+    [key: string]: {
+      name: string
+      avatar: string
+      href: string
+    }
+  },
   social: ExplainerSocial
 }
 

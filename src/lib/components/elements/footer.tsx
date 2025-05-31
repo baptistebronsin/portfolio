@@ -73,7 +73,7 @@ const navigation = {
 }
 
 import { Icon } from '@iconify/react'
-import config from 'explainer.config'
+import config from 'portfolio.config'
 
 export default function Footer() {
   return (

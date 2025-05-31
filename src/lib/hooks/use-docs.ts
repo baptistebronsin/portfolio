@@ -1,5 +1,5 @@
 import { getCollection, type CollectionKey } from "astro:content";
-import config from "../../../explainer.config";
+import config from "../../../portfolio.config";
 
 export function useDocs() {
   async function getDocResumes(segments?: string[]) {

@@ -8,7 +8,7 @@ import {
 import { Icon } from '@iconify/react'
 import clsx from 'clsx'
 import { Fragment, useState } from 'react'
-import config from '../../../../explainer.config'
+import config from '../../../../portfolio.config'
 
 type Props = {
 }
