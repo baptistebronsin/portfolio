@@ -11,20 +11,6 @@ export default defineExplainerConfig({
     getStarted: '/docs/framework/getting-started',
     documentation: '/docs/framework/installation'
   },
-  docs: {
-    framework: {
-      icon: 'lucide:cuboid',
-      label: 'Framework',
-      href: '/docs/framework/getting-started',
-      baseUrl: '/docs/framework',
-    },
-    syntax: {
-      icon: 'lucide:pencil-line',
-      label: 'Syntax',
-      href: '/docs/syntax/texts',
-      baseUrl: '/docs/syntax',
-    },
-  },
   authors: {
     leadcode_dev: {
       name: 'LeadcodeDev',
@@ -48,21 +34,21 @@ export default defineExplainerConfig({
     }
   },
   navbar: [
-    {
-      label: 'Docs',
-      items: [
-        {
-          label: 'Framework',
-          description: 'Discover Explainer framework guidelines and usages.',
-          href: '/docs/framework/getting-started',
-        },
-        {
-          label: 'Syntax',
-          description: 'Learn markdown syntax and markdown components.',
-          href: '/docs/syntax/texts',
-        },
-      ],
-    },
+    // {
+    //   label: 'Docs',
+    //   items: [
+    //     {
+    //       label: 'Framework',
+    //       description: 'Discover Explainer framework guidelines and usages.',
+    //       href: '/docs/framework/getting-started',
+    //     },
+    //     {
+    //       label: 'Syntax',
+    //       description: 'Learn markdown syntax and markdown components.',
+    //       href: '/docs/syntax/texts',
+    //     },
+    //   ],
+    // },
     {
       label: 'Articles',
       href: '/articles',

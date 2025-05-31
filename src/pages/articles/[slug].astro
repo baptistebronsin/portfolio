@@ -77,17 +77,17 @@ const headingTree = buildHeadingTree(availableHeadings);
 							<BreadcrumbItem>
 								<BreadcrumbLink
 									className="flex items-center gap-2 text-muted-foreground"
-									href="/blog"
+									href="/artciles"
 								>
 									<NewspaperIcon className="size-4" />
-									Blog
+									Artciles
 								</BreadcrumbLink>
 							</BreadcrumbItem>
 							<BreadcrumbSeparator />
 							<BreadcrumbItem>
 								<BreadcrumbLink
 									className="text-primary"
-									href={`/blog/${element.data.permalink}`}
+									href={`/artciles/${element.data.permalink}`}
 								>
 									{element.data.title}
 								</BreadcrumbLink>
@@ -210,4 +210,4 @@ const headingTree = buildHeadingTree(availableHeadings);
 			</aside>
 		</div>
 	</div>
-</BlogLayout>
+</ArticleLayout>

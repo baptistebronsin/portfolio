@@ -31,13 +31,6 @@ type ExplainerMeta = {
   thumbnail: string
 }
 
-type ExplainerDocs = {
-  icon: string
-  label: string
-  href: string
-  baseUrl: string
-}
-
 const SocialLink = {
   github: 'Github',
   twitter: 'Twitter',
@@ -58,7 +51,6 @@ type ExplainerSocial = {
 
 type ExplainerConfig = {
   meta: ExplainerMeta
-  docs: { [key in CollectionKey]?: ExplainerDocs }
   urls: {
     github?: string
     getStarted?: string
