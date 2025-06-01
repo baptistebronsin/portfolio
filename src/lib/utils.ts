@@ -24,7 +24,7 @@ type NavbarItem = {
   href: string
 }
 
-type ExplainerMeta = {
+type PortfolioMeta = {
   title: string
   description: string
   thumbnail: string
@@ -41,15 +41,15 @@ const SocialLink = {
   twitch: 'Twitch',
 } as const
 
-type ExplainerSocial = {
+type PortfolioSocial = {
   [key in keyof typeof SocialLink]?: {
     href: string
     icon: string
   }
 }
 
-type ExplainerConfig = {
-  meta: ExplainerMeta
+type PortfolioConfig = {
+  meta: PortfolioMeta
   urls: {
     github?: string
     getStarted?: string
@@ -63,9 +63,9 @@ type ExplainerConfig = {
       href: string
     }
   },
-  social: ExplainerSocial
+  social: PortfolioSocial
 }
 
-export function defineExplainerConfig(config: ExplainerConfig) {
+export function definePortfolioConfig(config: PortfolioConfig) {
   return config
 }

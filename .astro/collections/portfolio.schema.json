@@ -1,7 +1,7 @@
 {
-  "$ref": "#/definitions/explainer",
+  "$ref": "#/definitions/portfolio",
   "definitions": {
-    "explainer": {
+    "portfolio": {
       "type": "object",
       "properties": {
         "title": {

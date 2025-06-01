@@ -1,6 +1,6 @@
-import { defineExplainerConfig } from '@/utils'
+import { definePortfolioConfig } from '@/utils'
 
-export default defineExplainerConfig({
+export default definePortfolioConfig({
   meta: {
     title: 'Baptiste Bronsin',
     description: 'Portfolio de Baptiste Bronsin.',
