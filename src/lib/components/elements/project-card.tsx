@@ -13,7 +13,7 @@ export default function ProjectCard(props: Props) {
       href={`/projects/${props.project.data.permalink}`}
       className="relative flex flex-col gap-2 border border-border hover:border-primary/75 bg-primary/5 transition-colors duration-200 rounded-lg p-3"
     >
-      <div className="flex flex-col gap-3 justify-between">
+      <div className="flex flex-col gap-3 justify-between h-full">
         <div className='flex flex-col gap-3'>
           <div className='flex flex-row justify-between'>
             <div  className='flex flex-row justify-between gap-2'>
