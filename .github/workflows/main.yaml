@@ -20,3 +20,17 @@ jobs:
 
       - name: Push Docker image
         run: docker push ghcr.io/${{ github.repository_owner }}/portfolio:${{ github.sha }}
+
+      - name: Set up Git
+        run: |
+          git config user.email "contact@baptistebronsin.be"
+          git config user.name "Baptiste CI"
+
+      - name: Update Helm Values
+        run: |
+          IMAGE_TAG="${{ github.sha }}"
+          HELM_VALUES_FILE="helm/values.yaml"
+          sed -i "s/portfolio:.*/portfolio:$IMAGE_TAG/" $HELM_VALUES_FILE
+          git add $HELM_VALUES_FILE
+          git commit -m "Update image tag to $IMAGE_TAG"
+          git push origin HEAD:${GITHUB_REF#refs/heads/}

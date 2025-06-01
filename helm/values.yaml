@@ -1,0 +1,21 @@
+namespace: portfolio-dev
+
+front:
+  name: portfolio-front
+  image: ghcr.io/baptistebronsin/portfolio:3f882262944dbd30236a63d18af9c73e3b2baf11
+  replicaCount: 1
+  port: 8080
+
+  servicePort: 8080
+  containerPort: 8080
+
+  ingress:
+    enabled: true
+    annotations:
+      spec.ingressClassName: traefik
+      cert-manager.io/cluster-issuer: letsencrypt-prod
+      traefik.ingress.kubernetes.io/router.middlewares: default-redirect-https@kubernetescrd
+    hosts: dev-baptistebronsin.be
+    tls: true
+    tlsSecret: portfolio-tls
+
