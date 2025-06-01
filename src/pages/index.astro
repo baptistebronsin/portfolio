@@ -110,14 +110,14 @@ const studies: Study[] = [
 		</div>
 
 		<div
-			class="max-w-screen-xl sm:w-4xl flex flex-col gap-8 px-5 md:px-0 py-16 pt-0"
+			class="max-w-screen-xl sm:w-4xl flex flex-col gap-8 px-5 md:px-0 pt-20 pb-8"
 			id="career"
 		>
 			<HomeCareer jobs={jobs} />
 		</div>
 
 		<div
-			class="max-w-screen-xl sm:w-4xl flex flex-col gap-8 px-5 md:px-0 py-16"
+			class="max-w-screen-xl sm:w-4xl flex flex-col gap-8 px-5 md:px-0 pt-20 pb-8"
 			id="studies"
 		>
 			<HomeStudy studies={studies} />
@@ -125,7 +125,7 @@ const studies: Study[] = [
 
 		{
 			projects.length && (
-				<div class="max-w-screen-xl mx-auto">
+				<div class="max-w-screen-xl mx-auto pt-16">
 					<HomeProject projects={projects} client:visible />
 				</div>
 			)
