@@ -15,13 +15,16 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '16'
+          node-version: '20'
+
+      - name: Install pnpm
+        run: npm install -g pnpm
 
       - name: Install dependencies
-        run: npm install
+        run: pnpm install
 
       - name: Run linting
-        run: npm run lint
+        run: pnpm run lint
 
   build-and-push:
     needs: lint
@@ -33,7 +36,7 @@ jobs:
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
       - name: Build Docker image
-        run: docker build -t ghcr.io/${{ github.repository_owner }}/my-app:${{ github.sha }} .
+        run: docker build -t ghcr.io/${{ github.repository_owner }}/portfolio:${{ github.sha }} .
 
       - name: Push Docker image
-        run: docker push ghcr.io/${{ github.repository_owner }}/my-app:${{ github.sha }}
+        run: docker push ghcr.io/${{ github.repository_owner }}/portfolio:${{ github.sha }}
