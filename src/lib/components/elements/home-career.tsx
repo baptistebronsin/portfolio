@@ -34,7 +34,7 @@ export function HomeCareer(props: Props) {
 			<div className="flex flex-col gap-4">
 				{
 					props.jobs.map((job) => (
-						<Card className="flex flex-row justify-between items-center gap-4 py-2 sm:py-4 px-4 sm:px-6 border-l-3 border-l-primary/70">
+						<Card className="flex flex-row justify-between items-center gap-4 py-2 sm:py-4 px-4 sm:px-6 border-l-3 border-l-primary/70" key={job.title}>
 							{/* <div class="flex flex-col gap-2 w-full"> */}
 							<div className="flex flex-col gap-4 w-full">
 								<CardHeader className="p-0">
@@ -72,7 +72,7 @@ export function HomeCareer(props: Props) {
 									<div>
 										{
 											job.tags.map((tag) => (
-												<span className="inline-block bg-secondary text-secondary-foreground px-2 py-1 rounded-md text-xs mr-2 mb-2">{tag}</span>
+												<span className="inline-block bg-secondary text-secondary-foreground px-2 py-1 rounded-md text-xs mr-2 mb-2" key={tag}>{tag}</span>
 											))
 										}
 									</div>

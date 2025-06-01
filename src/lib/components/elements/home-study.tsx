@@ -32,7 +32,7 @@ export function HomeStudy(props: Props) {
 			<div className="flex flex-col gap-4">
 				{
 					props.studies.map((study) => (
-						<Card className="flex flex-row justify-between items-center gap-4 py-2 sm:py-4 px-4 sm:px-6 border-l-3 border-l-primary/70">
+						<Card className="flex flex-row justify-between items-center gap-4 py-2 sm:py-4 px-4 sm:px-6 border-l-3 border-l-primary/70" key={study.title}>
 							<div className="flex flex-col gap-4 w-full">
 								<CardHeader className="p-0">
 									<div className="flex flex-col gap-2">
@@ -64,7 +64,7 @@ export function HomeStudy(props: Props) {
 									<div>
 										{
 											study.tags.map((tag) => (
-												<span className="inline-block bg-secondary text-secondary-foreground px-2 py-1 rounded-md text-xs mr-2 mb-2">{tag}</span>
+												<span className="inline-block bg-secondary text-secondary-foreground px-2 py-1 rounded-md text-xs mr-2 mb-2" key={tag}>{tag}</span>
 											))
 										}
 									</div>

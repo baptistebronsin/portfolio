@@ -1,4 +1,3 @@
-import type { CollectionKey } from 'astro:content';
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 

@@ -5,10 +5,6 @@ import { getCollection } from "astro:content";
 import config from "../../../portfolio.config";
 
 const articles = (await getCollection("article", (post) => {
-	if (import.meta.env.DEV) {
-		return true;
-	}
-
 	return post.data.publishedAt && new Date(post.data.publishedAt) <= new Date();
 })).sort((a, b) => {
 	return a.data.publishedAt && b.data.publishedAt ? new Date(b.data.publishedAt).getTime() - new Date(a.data.publishedAt).getTime() : 0;

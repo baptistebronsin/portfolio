@@ -1,0 +1,34 @@
+---
+// src/pages/404.astro
+import Layout from "@/layouts/Layout.astro";
+import { Button } from '../lib/components/ui/button'
+---
+
+<Layout>
+    <div class="relative flex flex-col gap-8 items-center justify-center min-h-[60vh] px-4">
+        <h1 class="text-xl sm:text-2xl text-center font-semibold" id="page-content">Loading...</h1>
+        <Button asLink className="flex items-center gap-2 cursor-pointer" href="" id="page-button"></Button>
+    </div>
+
+  <script is:inline>
+    // This script will run after the page has loaded
+    const path = window.location.pathname;
+    let pageContent = 'Oups ! It seems like this page does not exist.';
+    let buttonText = 'Go back to home';
+    let buttonHref = '/';
+
+    if (path.startsWith('/project')) {
+        pageContent = "Oups ! It seems like this project doesn't exist or have been moved.";
+        buttonText = 'Go back to projects';
+        buttonHref = '/projects';
+    } else if (path.startsWith('/article')) {
+        pageContent = "Oups ! It seems like this article doesn't exist or have been moved.";
+        buttonText = 'Go back to articles';
+        buttonHref = '/articles';
+    }
+
+    document.getElementById('page-content').textContent = pageContent;
+    document.getElementById('page-button').textContent = buttonText;
+    document.getElementById('page-button').href = buttonHref;
+  </script>
+</Layout>
