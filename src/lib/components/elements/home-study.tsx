@@ -24,7 +24,7 @@ export function HomeStudy(props: Props) {
 					<GraduationCap className="inline w-8 h-8 text-primary" />
 				</div>
 				<div className="flex flex-col justify-between">
-					<h2 className="text-3xl font-bold">My studies</h2>
+					<h2 className="text-2xl font-bold">My studies</h2>
 					<h3>My academic background</h3>
 				</div>
 			</div>
