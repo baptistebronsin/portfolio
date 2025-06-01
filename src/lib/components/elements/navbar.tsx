@@ -124,21 +124,18 @@ export default function Navbar() {
             </SheetTrigger>
             <SheetContent
               className="flex flex-col justify-between gap-4"
-              side="left"
+              side="right"
             >
               <div>
                 <SheetHeader>
                   <SheetTitle>{config.meta.title}</SheetTitle>
                 </SheetHeader>
                 <SheetDescription />
-                <div className="flex flex-col items-start gap-2">
-                  <a href="/" className="pt-5 text-sm font-medium hover:bg-accent hover:text-accent-foreground rounded-md cursor-pointer">
-                    Home
-                  </a>
+                <div className="mt-4 flex flex-col items-start gap-2">
                   {config.navbar.map((element) => {
                     if (element.href) {
                       return (
-                        <a key={element.label} href={element.href} className="text-sm font-medium hover:bg-accent hover:text-accent-foreground rounded-md cursor-pointer">
+                        <a key={element.label} href={element.href} onClick={() => window.location.reload()} className="text-lg font-medium hover:bg-accent hover:text-accent-foreground rounded-md cursor-pointer">
                           {element.label}
                         </a>
                       )
