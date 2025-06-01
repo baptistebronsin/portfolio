@@ -48,13 +48,13 @@ export default function Navbar() {
       <div className="max-w-screen-xl mx-auto flex items-center justify-between">
         <a href="/" className="flex sm:hidden items-center space-x-2">
           {/* <FileCode2Icon className="size-5 text-primary" /> */}
-          <span className="font-bold text-primary text-lg">{config.meta.title}</span>
+          <span className="font-bold text-lg">{config.meta.title}</span>
         </a>
 
         <div className="hidden sm:flex items-center justify-between w-full">
           <a href="/" className="flex items-center space-x-2">
             {/* <FileCode2Icon className="size-5 text-primary" /> */}
-            <span className="font-bold text-primary text-lg">{config.meta.title}</span>
+            <span className="font-bold text-lg">{config.meta.title}</span>
           </a>
           <NavigationMenu>
             <NavigationMenuList>

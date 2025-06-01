@@ -33,12 +33,12 @@ export default defineExplainerConfig({
   },
   navbar: [
     {
-      label: 'Studies',
-      href: '/#studies',
-    },
-    {
       label: 'Career',
       href: '/#career',
+    },
+    {
+      label: 'Studies',
+      href: '/#studies',
     },
     {
       label: 'Projects',

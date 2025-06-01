@@ -1,5 +1,7 @@
 import type { CollectionEntry } from 'astro:content'
 import ArticleCard from './article-card'
+import { Button } from '../ui/button'
+import { NewspaperIcon } from 'lucide-react'
 
 type Props = {
   articles: CollectionEntry<"article">[]
@@ -17,13 +19,13 @@ export function HomeArticle(props: Props) {
         </div>
         {
           props.articles.length > 3 && (
-            <div className="mt-8 text-center">
-              <a
-                href="/articles"
-                className="inline-block rounded-md bg-primary px-4 py-2 text-sm font-semibold text-white hover:bg-primary/90 transition-colors"
-              >
-                See all articles
-              </a>
+            <div className='mt-8 text-center '>
+              <div className="inline-block">
+                <Button asLink className="flex items-center gap-2 cursor-pointer" href='/articles'>
+                  <NewspaperIcon className="w-5 h-5" />
+                  See all articles
+                </Button>
+              </div>
             </div>
           )
         }

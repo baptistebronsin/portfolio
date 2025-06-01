@@ -16,11 +16,11 @@ const articles = (await getCollection("article", (post) => {
 ---
 
 <ArticleLayout>
-	<div class="py-24 sm:py-10">
+	<div class="py-18 sm:py-24 sm:py-10">
 		<div class="mx-auto max-w-7xl px-6 sm:px-0">
 			<div class="mx-auto max-w-2xl lg:mx-0">
 				<h2
-					class="mt-2 text-5xl font-semibold tracking-tight text-gray-900 sm:text-5xl"
+					class="mt-2 text-3xl font-semibold tracking-tight text-gray-900 sm:text-3xl"
 				>
 					Baptiste articles
 				</h2>
@@ -33,7 +33,7 @@ const articles = (await getCollection("article", (post) => {
 		</div>
 	</div>
 
-	<div class="text-lg sm:text-xl/8 text-(--ui-text-muted) text-pretty mt-6">
+	<div class="text-lg sm:text-xl/8 text-(--ui-text-muted) text-pretty mt-0 sm:mt-6">
 		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
 			{articles.map((article) => <ArticleCard article={article} />)}
 		</div>

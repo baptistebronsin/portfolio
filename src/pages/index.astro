@@ -15,8 +15,9 @@ import {
 } from "@/components/ui/card";
 import Layout from "@/layouts/Layout.astro";
 import { getCollection } from "astro:content";
-import { BookIcon, RocketIcon } from "lucide-react";
+import { Calendar, MapPin, NewspaperIcon, RocketIcon } from "lucide-react";
 import config from "../../portfolio.config";
+import { HomeCareer, type Job } from "../lib/components/elements/home-career";
 
 const articles = (await getCollection("article", (post) => {
 	if (import.meta.env.DEV) {
@@ -28,27 +29,36 @@ const articles = (await getCollection("article", (post) => {
 	return a.data.publishedAt && b.data.publishedAt ? new Date(b.data.publishedAt).getTime() - new Date(a.data.publishedAt).getTime() : 0;
 });
 
-const header = {
-	title: "Portfolio of Baptiste Bronsin",
-	subtitle: "An apprentice DevOps Engineer",
-	description: "I'm Baptiste Bronsin, a passionate DevOps Engineer at Polytech Montpellier. I love building tools and automating processes to make development easier and more efficient."
-};
-
-const cards = [
+const jobs: Job[] = [
 	{
-		title: "Latest tweets",
-		description: "Lorem ipsum dolor sit amet.",
-		content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+		company: "Kaliop",
+		link: "https://www.kaliop.com/en",
+		logo: "/images/company/kaliop.png",
+		title: "Software Engineer Apprentice",
+		description: "As part of the Kaliop development team, I'm involved in various projects that focus on building web applications for clients.",
+		date: "april 2024 - Present",
+		location: "Montpellier, France",
+		tags: ["NuxtJS", "NestJS", "Opensearch", "Contentful", "GraphQL"],
 	},
 	{
-		title: "Latest tweets",
-		description: "Lorem ipsum dolor sit amet.",
-		content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+		company: "Eiffage Energy Systemes",
+		link: "https://www.eiffageenergiesystemes.com/en",
+		logo: "/images/company/eiffage.png",
+		title: "Web development Internship",
+		description: "Within the web development department, I contributed to the development of the SmartCar-E web application for the Eiffage group.",
+		date: "june 2023 - august 2023",
+		location: "Thimister-Clermont, Belgium",
+		tags: ["AngularJS", "ExpressJS", "MySQL", "Docker", "IoT"],
 	},
 	{
-		title: "Latest tweets",
-		description: "Lorem ipsum dolor sit amet.",
-		content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+		company: "Lirmm",
+		link: "https://www.lirmm.fr/lirmm-en",
+		logo: "/images/company/lirmm.jpeg",
+		title: "Research Lab Internship",
+		description: "Within the TEXT team, I contributed to the research of new text processing methods (TALN) for the laboratory's researchers.",
+		date: "may 2022 - july 2023",
+		location: "Montpellier, France",
+		tags: ["Python", "ML", "Oriented Graph", "Algorithm", "Research"],
 	},
 ];
 
@@ -101,71 +111,38 @@ const bentogrid: BentoGridProps = {
 ---
 
 <Layout>
-	<div>
+	<div class="relative flex flex-col items-center justify-center">
 		<div class="relative flex items-center justify-center min-h-[60vh]">
 			<!-- <BackgroundAnimation client:only /> -->
 			<div
 				class="px-5 sm:px-0 relative z-10 flex flex-col items-center justify-center gap-8 sm:gap-4 text-center"
 			>
-				<h1 class="text-4xl font-bold text-primary">{header.title}</h1>
-				<h2 class="text-2xl text-foreground font-bold">{header.subtitle}</h2>
+				<h1 class="text-2xl font-bold">Hello, I'm <span class="text-primary">Baptiste Bronsin</span></h1>
+				<h2 class="text-xl text-foreground font-bold">An apprentice DevOps Engineer ☁️</h2>
 				<p class="text-lg text-foreground font-light max-w-xl">
-					{header.description}
+					I'm Baptiste Bronsin, a passionate DevOps Engineer at Polytech Montpellier. I love building tools and automating processes to make development easier and more efficient.
 				</p>
 
-				<!-- <div class="flex flex-col justify-center md:flex-row gap-5 w-full">
-					{
-						header.actions.map((action) => (
-							<Button>
-								<a
-									href={action.href}
-									class="flex items-center gap-2 cursor-pointer"
-								>
-									<action.icon className="w-5 h-5" />
-									{action.label}
-								</a>
-							</Button>
-						))
-					}
-					<Button variant="outline">
-						<a
-							href={config.urls.github}
-							target="_blank"
-							class="flex items-center gap-2 cursor-pointer"
-						>
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								width={24}
-								height={24}
-								viewBox="0 0 24 24"
-							>
-								<path
-									fill="currentColor"
-									d="M12 .297c-6.63 0-12 5.373-12 12c0 5.303 3.438 9.8 8.205 11.385c.6.113.82-.258.82-.577c0-.285-.01-1.04-.015-2.04c-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729c1.205.084 1.838 1.236 1.838 1.236c1.07 1.835 2.809 1.305 3.495.998c.108-.776.417-1.305.76-1.605c-2.665-.3-5.466-1.332-5.466-5.93c0-1.31.465-2.38 1.235-3.22c-.135-.303-.54-1.523.105-3.176c0 0 1.005-.322 3.3 1.23c.96-.267 1.98-.399 3-.405c1.02.006 2.04.138 3 .405c2.28-1.552 3.285-1.23 3.285-1.23c.645 1.653.24 2.873.12 3.176c.765.84 1.23 1.91 1.23 3.22c0 4.61-2.805 5.625-5.475 5.92c.42.36.81 1.096.81 2.22c0 1.606-.015 2.896-.015 3.286c0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"
-								></path>
-							</svg>
-							View on Github
-						</a>
+				<div class="flex flex-col justify-center md:flex-row gap-5 w-full">
+					
+					<Button asLink className="flex items-center gap-2 cursor-pointer" href='/projects'>
+						<RocketIcon className="w-5 h-5" />
+						See my projects
 					</Button>
-				</div> -->
+
+					<Button asLink variant="outline" className="flex items-center gap-2 cursor-pointer" href='/articles'>
+						<NewspaperIcon className="w-5 h-5" />
+						See my articles
+					</Button>
+				</div>
 			</div>
 		</div>
 
 		<div
-			class="max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 px-5 md:px-0 py-16"
+			class="max-w-screen-xl sm:w-4xl flex flex-col gap-8 px-5 md:px-0 py-16"
+			id="career"
 		>
-			{
-				cards.map((card) => (
-					<Card>
-						<CardHeader>
-							<CardTitle>{card.title}</CardTitle>
-							<CardDescription>{card.description}</CardDescription>
-						</CardHeader>
-
-						<CardContent>{card.content}</CardContent>
-					</Card>
-				))
-			}
+			<HomeCareer jobs={jobs} />
 		</div>
 
 		<div class="max-w-screen-xl mx-auto">
