@@ -27,7 +27,12 @@ type NavbarItem = {
 type PortfolioMeta = {
   title: string
   description: string
-  thumbnail: string
+  thumbnail: {
+    image: string
+    alt: string
+    width: number
+    height: number
+  }
 }
 
 const SocialLink = {

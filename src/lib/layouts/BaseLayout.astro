@@ -8,12 +8,7 @@ import "../../assets/css/global.css";
 const {
   title = config.meta.title,
   description = config.meta.description,
-  thumbnail = {
-    image: config.meta.thumbnail,
-    alt: config.meta.title,
-    width: 1200,
-    height: 630
-  },
+  thumbnail = config.meta.thumbnail,
   ogType = "website"
 } = Astro.props;
 ---

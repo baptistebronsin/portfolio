@@ -3,8 +3,13 @@ import { definePortfolioConfig } from '@/utils'
 export default definePortfolioConfig({
   meta: {
     title: 'Baptiste Bronsin',
-    description: 'Portfolio de Baptiste Bronsin.',
-    thumbnail: 'https://placehold.co/1200x630',
+    description: 'Portfolio of Baptiste Bronsin.',
+    thumbnail: {
+      image: '/images/baptiste.jpeg',
+      alt: 'Baptiste Bronsin Portfolio Thumbnail',
+      width: 1200,
+      height: 630
+    },
   },
   urls: {
     github: 'https://github.com/baptistebronsin'
