@@ -2,7 +2,6 @@
 import ArticleCard from "@/components/elements/article-card";
 import ArticleLayout from "@/layouts/ArticleLayout.astro";
 import { getCollection } from "astro:content";
-import config from "../../../portfolio.config";
 
 const articles = (await getCollection("article", (post) => {
 	return post.data.publishedAt && new Date(post.data.publishedAt) <= new Date();
@@ -34,4 +33,4 @@ const articles = (await getCollection("article", (post) => {
 			{articles.map((article) => <ArticleCard article={article} />)}
 		</div>
 	</div>
-</ArticleLayoutLayout>
+</ArticleLayout>
