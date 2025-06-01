@@ -1,4 +1,4 @@
-import { Calendar, MapPin } from "lucide-react"
+import { BriefcaseBusiness, Calendar, MapPin } from "lucide-react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../ui/card"
 
 export type Job = {
@@ -19,7 +19,15 @@ type Props = {
 export function HomeCareer(props: Props) {
     return (
         <>
-            <h2 className="text-3xl font-bold">My career</h2>
+			<div className="flex flex-row items-center gap-4">
+				<div className="p-3 bg-primary/10 rounded-md">
+					<BriefcaseBusiness className="inline w-8 h-8 text-primary" />
+				</div>
+				<div className="flex flex-col justify-between">
+					<h2 className="text-3xl font-bold">My career</h2>
+					<h3>My academic background</h3>
+				</div>
+			</div>
 			
 			<div className="flex flex-col gap-4">
 				{

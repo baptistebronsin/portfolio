@@ -18,6 +18,7 @@ import { getCollection } from "astro:content";
 import { Calendar, MapPin, NewspaperIcon, RocketIcon } from "lucide-react";
 import config from "../../portfolio.config";
 import { HomeCareer, type Job } from "../lib/components/elements/home-career";
+import { HomeStudy, type Study } from "../lib/components/elements/home-study";
 
 const articles = (await getCollection("article", (post) => {
 	if (import.meta.env.DEV) {
@@ -38,7 +39,7 @@ const jobs: Job[] = [
 		description: "As part of the Kaliop development team, I'm involved in various projects that focus on building web applications for clients.",
 		date: "april 2024 - Present",
 		location: "Montpellier, France",
-		tags: ["NuxtJS", "NestJS", "Opensearch", "Contentful", "GraphQL"],
+		tags: ["NuxtJS", "NestJS", "Opensearch", "Contentful", "GraphQL", "Agile"],
 	},
 	{
 		company: "Eiffage Energy Systemes",
@@ -61,6 +62,29 @@ const jobs: Job[] = [
 		tags: ["Python", "ML", "Oriented Graph", "Algorithm", "Research"],
 	},
 ];
+
+const studies: Study[] = [
+	{
+		title: "DevOps Engineer",
+		field: "Computer Development and Systems Administration",
+		school: "Polytech Montpellier",
+		link: "https://www.polytech.umontpellier.fr/formation/cycle-ingenieur/devops/en-quelques-mots-do",
+		date: "2023 - 2026",
+		location: "Montpellier, France",
+		description: "Currently enrolled in the DevOps Engineer program at Polytech Montpellier, I'm learning the skills needed to become a proficient DevOps engineer.",
+		tags: ["DevOps", "Cloud", "CI/CD", "Automation"],
+	},
+	{
+		title: "Computer Science Bachelor's",
+		field: "General Computer Science",
+		school: "Montpellier Faculty of Science",
+		link: "https://informatique-fds.edu.umontpellier.fr/en/3331-2",
+		date: "2020 - 2023",
+		location: "Montpellier, France",
+		description: "I completed my Bachelor's degree in Computer Science at the Montpellier Faculty of Science, where I gained a solid foundation in software development, theoretical computer science, networks, and databases.",
+		tags: ["Software Development", "Theoretical Computer Science", "Networks", "Databases"],
+	}
+]
 
 const bentogrid: BentoGridProps = {
 	title: "What we offer",
@@ -115,16 +139,15 @@ const bentogrid: BentoGridProps = {
 		<div class="relative flex items-center justify-center min-h-[60vh]">
 			<!-- <BackgroundAnimation client:only /> -->
 			<div
-				class="px-5 sm:px-0 relative z-10 flex flex-col items-center justify-center gap-8 sm:gap-4 text-center"
+				class="px-5 sm:px-0 relative z-10 flex flex-col items-center justify-center gap-6 sm:gap-4 text-center"
 			>
-				<h1 class="text-2xl font-bold">Hello, I'm <span class="text-primary">Baptiste Bronsin</span></h1>
+				<h1 class="text-2xl sm:text-4xl font-bold">Hello, I'm <span class="text-primary">Baptiste Bronsin</span></h1>
 				<h2 class="text-xl text-foreground font-bold">An apprentice DevOps Engineer ☁️</h2>
 				<p class="text-lg text-foreground font-light max-w-xl">
 					I'm Baptiste Bronsin, a passionate DevOps Engineer at Polytech Montpellier. I love building tools and automating processes to make development easier and more efficient.
 				</p>
 
 				<div class="flex flex-col justify-center md:flex-row gap-5 w-full">
-					
 					<Button asLink className="flex items-center gap-2 cursor-pointer" href='/projects'>
 						<RocketIcon className="w-5 h-5" />
 						See my projects
@@ -145,8 +168,11 @@ const bentogrid: BentoGridProps = {
 			<HomeCareer jobs={jobs} />
 		</div>
 
-		<div class="max-w-screen-xl mx-auto">
-			<HomeBentogrid {...bentogrid} />
+		<div
+			class="max-w-screen-xl sm:w-4xl flex flex-col gap-8 px-5 md:px-0 py-16"
+			id="studies"
+		>
+			<HomeStudy studies={studies} />
 		</div>
 
 		{
