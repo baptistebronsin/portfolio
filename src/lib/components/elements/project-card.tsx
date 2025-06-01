@@ -24,7 +24,7 @@ export default function ProjectCard(props: Props) {
                       className="w-12 h-12 object-cover rounded-lg"
                   />
               </div>
-              <div className="flex flex-col gap-2">
+              <div className="flex flex-col justify-between">
                   <h3 className="flex flex-row gap-2 items-center text-lg font-semibold leading-none">
                       {props.project.data.title}
                       {/* <span>{props.project.data.links?.website && <a href={props.project.data.links?.website} target='_blank'><ExternalLink className="h-4 w-4 text-foreground" /></a>}</span> */}
