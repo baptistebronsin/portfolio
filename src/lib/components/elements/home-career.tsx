@@ -27,7 +27,7 @@ export function HomeCareer(props: Props) {
 				</div>
 				<div className="flex flex-col justify-between">
 					<h2 className="text-2xl font-bold">My career</h2>
-					<h3>My academic background</h3>
+					<h3>My professional background</h3>
 				</div>
 			</div>
 			
