@@ -1,15 +1,19 @@
 ---
+// src/layouts/ArticleLayout.astro
 import Separator from "@/components/elements/separator";
 import "../../assets/css/global.css";
 import "../../assets/css/markdown.css";
 import BaseLayout from "./BaseLayout.astro";
+
+// Récupérer les données spécifiques à l'article
+const { title, description, thumbnail } = Astro.props;
 ---
 
-<BaseLayout>
-	<main class="relative flex-1">
-		<Separator />
-		<div class="mx-auto px-4 max-w-screen-xl">
-			<slot />
-		</div>
-	</main>
+<BaseLayout title={title} description={description} thumbnail={thumbnail}>
+  <main class="relative flex-1">
+    <Separator />
+    <div class="mx-auto px-4 max-w-screen-xl">
+      <slot />
+    </div>
+  </main>
 </BaseLayout>

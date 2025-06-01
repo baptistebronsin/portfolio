@@ -65,7 +65,7 @@ function buildHeadingTree(headings: typeof availableHeadings): HeadingNode[] {
 const headingTree = buildHeadingTree(availableHeadings);
 ---
 
-<ArticleLayout>
+<ArticleLayout title={element.data.title} description={element.data.description} thumbnail={{ image: element.data.thumbnail, alt: element.data.title, width: 1200, height: 630 }}>
 	<div class="flex flex-col gap-4">
 		<div class="relative border-b py-8">
 			<div

@@ -3,9 +3,11 @@ import Separator from "@/components/elements/separator";
 import "../../assets/css/global.css";
 import "../../assets/css/markdown.css";
 import BaseLayout from "./BaseLayout.astro";
+
+const { title, description, thumbnail } = Astro.props;
 ---
 
-<BaseLayout>
+<BaseLayout  title={title} description={description} thumbnail={thumbnail}>
 	<main class="relative flex-1">
 		<Separator />
 		<div class="mx-auto px-4 max-w-screen-xl">
