@@ -1,4 +1,5 @@
-import { BriefcaseBusiness, Calendar, MapPin } from "lucide-react"
+import { BriefcaseBusiness, Calendar, ExternalLink, MapPin } from "lucide-react"
+import { Badge } from "../ui/badge"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../ui/card"
 
 export type Job = {
@@ -6,6 +7,7 @@ export type Job = {
     link: string,
     logo: string,
     title: string,
+	type: string,
     description: string,
     date: string,
     location: string,
@@ -32,26 +34,37 @@ export function HomeCareer(props: Props) {
 			<div className="flex flex-col gap-4">
 				{
 					props.jobs.map((job) => (
-						<Card className="flex flex-row justify-between items-center gap-4 py-2 sm:py-4 px-4 sm:px-6">
+						<Card className="flex flex-row justify-between items-center gap-4 py-2 sm:py-4 px-4 sm:px-6 border-l-3 border-l-primary/70">
 							{/* <div class="flex flex-col gap-2 w-full"> */}
 							<div className="flex flex-col gap-4 w-full">
 								<CardHeader className="p-0">
-									<div>
+									<div className="flex flex-col gap-2">
 										<CardTitle className="text-xl">{job.title}</CardTitle>
 										<CardDescription>
-											<a className="text-primary text-lg font-semibold" href={job.link} target="_blank">{job.company}</a>
+											<a className="flex flex-row gap-2 items-center text-primary text-lg font-semibold" href={job.link} target="_blank">
+												{job.company}
+												<ExternalLink className="h-4 w-4 text-foreground" />
+											</a>
 										</CardDescription>
+										<div className="flex flex-col gap-1">
+											<CardDescription className="flex flex-row gap-2 items-center">
+												<div className="flex flex-row items-center gap-1">
+													<Calendar className="inline w-4 h-4" />
+													{job.date}
+												</div>
+												<div className="flex flex-row items-center gap-1">
+													<MapPin className="inline w-4 h-4" />
+													{job.location}
+												</div>
+											</CardDescription>
+											<div className="flex flex-row items-center gap-2">
+												<BriefcaseBusiness className="inline w-4 h-4 text-primary" />
+												<Badge variant="outline" className="text-xs text-primary border-primary/40">
+													{job.type}
+												</Badge>
+											</div>
+										</div>
 									</div>
-									<CardDescription className="flex flex-row gap-2 items-center">
-										<div className="flex flex-row items-center gap">
-											<Calendar className="inline w-4 h-4 mr-1" />
-											{job.date}
-										</div>
-										<div className="flex flex-row items-center gap">
-											<MapPin className="inline w-4 h-4 mr-1" />
-											{job.location}
-										</div>
-									</CardDescription>
 								</CardHeader>
 
 								<CardContent className="flex flex-col gap-2 p-0">
