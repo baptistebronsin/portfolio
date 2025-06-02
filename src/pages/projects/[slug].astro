@@ -9,7 +9,7 @@ import {
 import ProjectLayout from "@/layouts/ProjectLayout.astro";
 import CodeGroupWrapper from "@/plugins/code-group/CodeGroupWrapper.astro";
 import { getCollection, render, type CollectionEntry } from "astro:content";
-import { NewspaperIcon } from "lucide-react";
+import { Earth, ExternalLink, Github, Gitlab, NewspaperIcon } from "lucide-react";
 import { DateTime } from "luxon";
 import config from "../../../portfolio.config";
 import ReadMoreWrapper from "../../lib/plugins/read-more/ReadMoreWrapper.astro";
@@ -128,8 +128,19 @@ const headingTree = buildHeadingTree(availableHeadings);
 			</div>
 			<div>
 				<div
-					class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4"
+					class="flex flex-row items-center gap-4"
 				>
+					{
+						element.data.logo && (
+							<div class="rounded-lg w-12 h-12">
+								<img
+									src={element.data.logo}
+									alt={element.data.title}
+									class="w-12 h-12 object-cover rounded-lg"
+								/>
+							</div>
+						)
+					}
 					<h1 class="text-4xl sm:text-4xl text-pretty font-medium">
 						{element.data.title}
 					</h1>
@@ -137,15 +148,6 @@ const headingTree = buildHeadingTree(availableHeadings);
 				<div class="text-lg text-pretty text-muted-foreground max-w-4xl mt-4">
 					{element.data.description}
 				</div>
-				{ element.data.tags && (
-					<div class="mt-4 flex flex-wrap items-center gap-2">
-						{element.data.tags.map((tag) => (
-							<Badge variant="outline" className="text-xs" key={tag}>
-                              {tag}
-                          	</Badge>
-						))}
-					</div>
-				)}
 				<div class="mt-8 flex flex-wrap items-center gap-6">
 					{
 						element.data.contributors?.map((key) => {
@@ -229,6 +231,38 @@ const headingTree = buildHeadingTree(availableHeadings);
 							))
 						}
 					</ul>
+
+					{
+						element.data.links && (element.data.links.website || element.data.links.github || element.data.links.gitlab) && (
+							<>
+								<p class="group text-sm font-semibold flex-1 items-center gap-1.5 mt-8 focus-visible:outline-primary hidden lg:flex">
+									<span class="truncate">Links</span>
+								</p>
+								<ul class="min-w-0">
+									{element.data.links.github && <li class="mt-2"><a href={element.data.links.github} class="flex flex-row items-center gap-2" target='_blank'><Github className="inline w-6 h-6 text-foreground" />Github</a></li>}
+                					{element.data.links.gitlab && <li class="mt-2"><a href={element.data.links.gitlab} class="flex flex-row items-center gap-2" target='_blank'><Gitlab className="inline w-6 h-6 text-foreground" />Gitlab</a></li>}
+									{element.data.links.website && <li class="mt-2"><a href={element.data.links.website} class="flex flex-row items-center gap-2" target='_blank'><Earth className="inline w-6 h-6 text-foreground" />Website</a></li>}
+								</ul>
+							</>
+						)
+					}
+
+					{
+						element.data.tags && element.data.tags.length > 0 && (
+							<>
+								<p class="group text-sm font-semibold flex-1 items-center gap-1.5 mt-8 focus-visible:outline-primary hidden lg:flex">
+									<span class="truncate">Tags</span>
+								</p>
+								<div class="min-w-0 mt-2 flex flex-wrap items-center gap-2">
+									{element.data.tags.map((tag) => (
+										<Badge variant="outline" className="text-xs" key={tag}>
+											{tag}
+										</Badge>
+									))}
+								</div>
+							</>
+						)
+					}
 				</div>
 			</aside>
 		</div>
