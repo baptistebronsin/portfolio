@@ -193,6 +193,7 @@ h6 {
     margin-bottom: 2em;
     font-size: 0.875em;
     line-height: 1.7142857;
+    border-collapse: collapse; /* Ajout de cette ligne */
     border-spacing: 0;
     border-style: hidden;
     border-radius: 0.5rem !important;
@@ -210,9 +211,9 @@ h6 {
     padding: 0.75rem 1rem;
     font-size: 0.875rem;
     text-align: left;
-    border-right: 1px solid var(--ui-border-muted);
-    border-bottom: 1px solid var(--ui-border-muted);
-    border-top: 1px solid var(--ui-border-muted);
+    border-right: 1px solid var(--color-border-tab);
+    border-bottom: 1px solid var(--color-border-tab);
+    border-top: 1px solid var(--color-border-tab);
   }
 
   tbody tr {
@@ -224,9 +225,9 @@ h6 {
     font-size: 0.875rem;
     text-align: left;
     vertical-align: top;
-    border-right: 1px solid var(--ui-border-muted);
-    border-bottom: 1px solid var(--ui-border-muted);
-    border-left: 1px solid var(--ui-border-muted);
+    border-right: 1px solid var(--color-border-tab);
+    border-bottom: 1px solid var(--color-border-tab);
+    border-left: 1px solid var(--color-border-tab);
   }
 
   img {
