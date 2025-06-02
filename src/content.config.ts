@@ -6,7 +6,7 @@ const project = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string(),
-    permalink: z.string().optional(),
+    permalink: z.string(),
     logo: z.string().optional(),
     contributors: z.array(z.string()).optional(),
     publishedAt: z.date().optional(),
@@ -31,7 +31,7 @@ const article = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string(),
-    permalink: z.string().optional(),
+    permalink: z.string(),
     thumbnail: z.string().optional(),
     authors: z.array(z.string()).optional(),
     publishedAt: z.date().optional(),

@@ -52,7 +52,8 @@
       },
       "required": [
         "title",
-        "description"
+        "description",
+        "permalink"
       ],
       "additionalProperties": false
     }
