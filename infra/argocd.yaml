@@ -1,17 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: portfolio-dev
+  name: portfolio
   namespace: argocd
 spec:
-  project: portfolio-dev
+  project: portfolio
   source:
     repoURL: https://github.com/baptistebronsin/portfolio.git
     targetRevision: main
     path: helm
   destination:
     server: https://kubernetes.default.svc
-    namespace: portfolio-dev
+    namespace: portfolio
   syncPolicy:
     automated:
       prune: true

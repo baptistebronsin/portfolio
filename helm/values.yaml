@@ -1,4 +1,4 @@
-namespace: portfolio-dev
+namespace: portfolio
 
 front:
   name: portfolio-front
@@ -15,7 +15,7 @@ front:
       spec.ingressClassName: traefik
       cert-manager.io/cluster-issuer: letsencrypt-prod
       traefik.ingress.kubernetes.io/router.middlewares: default-redirect-https@kubernetescrd
-    hosts: dev.baptistebronsin.be
+    hosts: baptistebronsin.be
     tls: true
     tlsSecret: portfolio-tls
 
