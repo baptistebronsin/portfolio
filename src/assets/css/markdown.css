@@ -289,6 +289,27 @@ html.dark .prose>.astro-code {
   }
 }
 
+.code-block {
+  position: relative;
+}
+
+.copy-code {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
+.copy-code:hover {
+  background-color: var(--primary);
+  opacity: 0.9;
+  cursor: pointer;
+}
+
 .prose h2 code,
 .prose h3 code,
 .prose h4 code,
