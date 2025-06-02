@@ -20,7 +20,9 @@ interface Props {
 }
 
 export async function getStaticPaths() {
-	const contents = await getCollection("project");
+	const contents = await getCollection("project", (post) => {
+		return post.data.publishedAt && new Date(post.data.publishedAt) <= new Date();
+	});
 	return contents.map((item) => ({
 		params: { slug: item.data.permalink, publishedAt: item.data.publishedAt ? new Date(item.data.publishedAt).toDateString() : null },
 		props: { element: item },
