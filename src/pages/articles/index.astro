@@ -32,5 +32,12 @@ const articles = (await getCollection("article", (post) => {
 		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
 			{articles.map((article) => <ArticleCard article={article} />)}
 		</div>
+		{
+			articles.length === 0 && (
+				<p class="text-center text-muted-foreground mt-4">
+					No articles found.
+				</p>
+			)
+		}
 	</div>
 </ArticleLayout>
