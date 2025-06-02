@@ -2,7 +2,7 @@ namespace: portfolio
 
 front:
   name: portfolio-front
-  image: ghcr.io/baptistebronsin/portfolio:dd8f30ec7840730c0c53304ddc980bb7ea9f6609
+  image: ghcr.io/baptistebronsin/portfolio:9355d9733437fcb7b978e41e0336a01f9f4053fa
   replicaCount: 1
   port: 8080
 
