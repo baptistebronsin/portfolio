@@ -38,6 +38,14 @@
             }
           ]
         },
+        "isAvailable": {
+          "type": "boolean",
+          "default": true
+        },
+        "isDisplayedOnHomepage": {
+          "type": "boolean",
+          "default": true
+        },
         "$schema": {
           "type": "string"
         }

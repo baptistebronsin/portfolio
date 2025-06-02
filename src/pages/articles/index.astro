@@ -4,7 +4,17 @@ import ArticleLayout from "@/layouts/ArticleLayout.astro";
 import { getCollection } from "astro:content";
 
 const articles = (await getCollection("article", (post) => {
-	return post.data.publishedAt && new Date(post.data.publishedAt) <= new Date();
+	if (import.meta.env.DEV) {
+		return true;
+	}
+
+	if (post.data.publishedAt && new Date(post.data.publishedAt) > new Date()) {
+		return false;
+	} else if (!post.data.isAvailable) {
+		return false;
+	}
+
+	return true;
 })).sort((a, b) => {
 	return a.data.publishedAt && b.data.publishedAt ? new Date(b.data.publishedAt).getTime() - new Date(a.data.publishedAt).getTime() : 0;
 });

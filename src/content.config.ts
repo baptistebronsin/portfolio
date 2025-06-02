@@ -21,6 +21,8 @@ const project = defineCollection({
     status: z.enum(["active", "inactive", "archived"]).optional(),
     type: z.enum(["personnal", "university"]).optional(),
     license: z.string().optional(),
+    isAvailable: z.boolean().default(true),
+    isDisplayedOnHomepage: z.boolean().default(true),
   })
 });
 
@@ -32,7 +34,9 @@ const article = defineCollection({
     permalink: z.string().optional(),
     thumbnail: z.string().optional(),
     authors: z.array(z.string()).optional(),
-    publishedAt: z.date().optional()
+    publishedAt: z.date().optional(),
+    isAvailable: z.boolean().default(true),
+    isDisplayedOnHomepage: z.boolean().default(true),
   }),
 })
 

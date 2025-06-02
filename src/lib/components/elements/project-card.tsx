@@ -1,13 +1,21 @@
 import type { CollectionEntry } from 'astro:content';
 import config from '../../../../portfolio.config';
 import { Badge } from '../ui/badge';
-import { Archive, ExternalLink, Github, Gitlab, RadioTower, Telescope, University, Unplug } from 'lucide-react';
+import { Archive, RadioTower, Telescope, University, Unplug } from 'lucide-react';
 
 type Props = {
   project: CollectionEntry<"project">
 }
 
+enum ProjectStatus {
+  HIDDEN = 'hidden',
+  NOT_HOME = 'not-home',
+  FOR_LATER = 'for-later',
+}
+
 export default function ProjectCard(props: Props) {
+  const devStatus = !import.meta.env.DEV ? undefined : !props.project.data.isAvailable ? ProjectStatus.HIDDEN : (props.project.data.publishedAt && props.project.data.publishedAt > new Date()) ? ProjectStatus.FOR_LATER : !props.project.data.isDisplayedOnHomepage ? ProjectStatus.NOT_HOME : undefined;
+
   return (
     <a
       href={`/projects/${props.project.data.permalink}`}
@@ -16,17 +24,22 @@ export default function ProjectCard(props: Props) {
       <div className="flex flex-col gap-3 justify-between h-full">
         <div className='flex flex-col gap-3'>
           <div className='flex flex-row justify-between'>
-            <div  className='flex flex-row justify-between gap-2'>
-              <div className="rounded-lg w-12 h-12">
-                  <img
-                      src={props.project.data.logo}
-                      alt={props.project.data.title}
-                      className="w-12 h-12 object-cover rounded-lg"
-                  />
-              </div>
-              <div className="flex flex-col justify-between">
-                  <h3 className="flex flex-row gap-2 items-center text-lg font-semibold leading-none">
+            <div  className='flex flex-row justify-between gap-2 w-full'>
+              {
+                props.project.data.logo && (
+                  <div className="rounded-lg w-12 h-12">
+                    <img
+                        src={props.project.data.logo}
+                        alt={props.project.data.title}
+                        className="w-12 h-12 object-cover rounded-lg"
+                    />
+                  </div>
+                )
+              }
+              <div className="flex flex-col justify-between w-full">
+                  <h3 className="flex flex-row gap-2 justify-between items-center text-lg font-semibold leading-none">
                       {props.project.data.title}
+                      {devStatus && <Badge variant="outline" className="text-xs text-red-500 border-red-500/40">{ devStatus }</Badge>}
                       {/* <span>{props.project.data.links?.website && <a href={props.project.data.links?.website} target='_blank'><ExternalLink className="h-4 w-4 text-foreground" /></a>}</span> */}
                   </h3>
                   <div>

@@ -10,13 +10,37 @@ import { HomeCareer, type Job } from "../lib/components/elements/home-career";
 import { HomeStudy, type Study } from "../lib/components/elements/home-study";
 
 const articles = (await getCollection("article", (post) => {
-	return post.data.publishedAt && new Date(post.data.publishedAt) <= new Date();
+	if (import.meta.env.DEV) {
+		return true && post.data.isDisplayedOnHomepage;
+	}
+
+	if (post.data.publishedAt && new Date(post.data.publishedAt) > new Date()) {
+		return false;
+	} else if (!post.data.isAvailable) {
+		return false;
+	} else if (!post.data.isDisplayedOnHomepage) {
+		return false;
+	}
+
+	return true;
 })).sort((a, b) => {
 	return a.data.publishedAt && b.data.publishedAt ? new Date(b.data.publishedAt).getTime() - new Date(a.data.publishedAt).getTime() : 0;
 });
 
 const projects = (await getCollection("project", (post) => {
-	return post.data.publishedAt && new Date(post.data.publishedAt) <= new Date();
+	if (import.meta.env.DEV) {
+		return true && post.data.isDisplayedOnHomepage;
+	}
+
+	if (post.data.publishedAt && new Date(post.data.publishedAt) > new Date()) {
+		return false;
+	} else if (!post.data.isAvailable) {
+		return false;
+	} else if (!post.data.isDisplayedOnHomepage) {
+		return false;
+	}
+
+	return true;
 })).sort((a, b) => {
 	return a.data.publishedAt && b.data.publishedAt ? new Date(b.data.publishedAt).getTime() - new Date(a.data.publishedAt).getTime() : 0;
 });

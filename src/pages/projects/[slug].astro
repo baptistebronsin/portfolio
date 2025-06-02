@@ -21,7 +21,17 @@ interface Props {
 
 export async function getStaticPaths() {
 	const contents = await getCollection("project", (post) => {
-		return post.data.publishedAt && new Date(post.data.publishedAt) <= new Date();
+		if (import.meta.env.DEV) {
+			return true;
+		}
+		
+		if (post.data.publishedAt && new Date(post.data.publishedAt) > new Date()) {
+			return false;
+		} else if (!post.data.isAvailable) {
+			return false;
+		}
+
+		return true;
 	});
 	return contents.map((item) => ({
 		params: { slug: item.data.permalink, publishedAt: item.data.publishedAt ? new Date(item.data.publishedAt).toDateString() : null },

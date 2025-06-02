@@ -1,16 +1,27 @@
 import type { CollectionEntry } from 'astro:content';
 import config from '../../../../portfolio.config';
+import { Badge } from '../ui/badge';
 
 type Props = {
   article: CollectionEntry<"article">
 }
 
+enum ProjectStatus {
+  HIDDEN = 'hidden',
+  NOT_HOME = 'not-home',
+  FOR_LATER = 'for-later',
+}
+
 export default function ArticleCard(props: Props) {
+  const devStatus = !import.meta.env.DEV ? undefined : !props.article.data.isAvailable ? ProjectStatus.HIDDEN : (props.article.data.publishedAt && props.article.data.publishedAt > new Date()) ? ProjectStatus.FOR_LATER : !props.article.data.isDisplayedOnHomepage ? ProjectStatus.NOT_HOME : undefined;
+
   return (
     <a
       href={`/articles/${props.article.data.permalink}`}
       className="relative flex flex-col gap-2 border border-border hover:border-primary/75 bg-primary/3 transition-colors duration-200 rounded-lg p-4"
     >
+      {devStatus && <Badge variant="outline" className="absolute bottom-4 right-4 text-xs text-red-500 border-red-500/40">{ devStatus }</Badge>}
+
       <div className="rounded-lg">
         <img
           src={props.article.data?.thumbnail}
