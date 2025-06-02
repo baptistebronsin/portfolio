@@ -9,7 +9,7 @@ export default function ArticleCard(props: Props) {
   return (
     <a
       href={`/articles/${props.article.data.permalink}`}
-      className="relative flex flex-col gap-2 border border-border hover:border-primary/75 bg-primary/5 transition-colors duration-200 rounded-lg p-4"
+      className="relative flex flex-col gap-2 border border-border hover:border-primary/75 bg-primary/3 transition-colors duration-200 rounded-lg p-4"
     >
       <div className="rounded-lg">
         <img
