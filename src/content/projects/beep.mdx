@@ -2,7 +2,7 @@
 title: "Beep"
 description: "Beep is a web application that aims to implement the same functionalities as the Discord platform. This project is being developed by the entire DevOps class of 2023-2026 at Polytech Montpellier."
 permalink: "beep"
-logo: '/images/project/beep.png'
+logo: '/images/project/beep/logo.png'
 contributors:
   - baptiste_bronsin
   - dorian_grasset
@@ -46,15 +46,93 @@ type: university
 license: "AGPL-3.0"
 ---
 
-# Welcome to Explainer
+# A Discord Alternative by DevOps Students
+<img src="/images/project/beep/logo.png" alt="Beep logo" width={200}/>
 
-Explainer is a documentation boilerplate designed to help you create beautiful, responsive, and accessible web documentation using [Astro](https://astro.build). This project combines the power of Astro with [Tailwind CSS](https://tailwindcss.com) and [TypeScript](https://www.typescriptlang.org) to provide a smooth development experience.
+The Polytech Montpellier DevOps class of 2023-2026 has a "fil rouge" project named **Beep**. This project aims to create a web application that replicates the functionalities of [the Discord platform](https://discord.com/).
 
-## Why Explainer?
+<img src="https://upload.wikimedia.org/wikipedia/fr/4/4f/Discord_Logo_sans_texte.svg" alt="Discord logo" width={100} />
 
-Documentation is often overlooked, but it's essential for the adoption and effective use of your project.
-Explainer fills an important gap in the technical documentation ecosystem. While Vue has robust solutions like Vitepress, the React ecosystem suffers from a lack of alternatives that don't depend on Next.js. Most documentation frameworks for React are closely tied to Next.js, which can be limiting for many projects.
+## Overview
 
-This is where Astro, and by extension Explainer, particularly shines. Astro offers remarkable flexibility by allowing you to integrate any technological component related to your business. You can easily incorporate React, Vue, Svelte components, or even standard web elements according to your specific needs.
+Beep is designed to offer a comprehensive communication platform for communities, friends, and professionals. It provides a seamless and integrated user experience with a focus on real-time communication and collaboration.
 
-This agnostic approach allows you to create documentation that perfectly aligns with your existing technology stack, without forcing you to adopt a particular ecosystem. Whether you work with React, Vue, or other frameworks, Explainer adapts to your needs rather than the other way around.
+## Functionalities
+
+Like Discord, Beep allows users to:
+
+- Create and manage servers (both private and public)
+- Send and receive messages in real-time (text and file sharing)
+- Join and participate in voice channels
+- Customize user profiles and server settings
+
+The project leverages modern web technologies to ensure performance, scalability, and a responsive design:
+
+- **Frontend:** React, TypeScript, and TailwindCSS
+- **Backend:** AdonisJS with PostgreSQL
+
+## Interface
+
+### User Authentication
+
+Beep offers a user-friendly authentication process, including traditional login/signup methods and QR code authentication for enhanced user convenience.
+
+<img src="/images/project/beep/login-page.png" alt="Beep login page" />
+
+### User Dashboard
+
+Once logged in, users are greeted with an intuitive interface:
+
+- **Left Sidebar:** Displays the servers the user is part of.
+- **Main Area:** Shows the messages exchanged in the current channel.
+- **Right Sidebar:** Lists the channels available in the selected server.
+
+<img src="/images/project/beep/server-page.png" alt="Beep home page" />
+
+## Team Work
+
+The Beep project is developed using an Agile methodology, with the project fragmented into sprint periods. Each sprint focuses on specific features and improvements, ensuring continuous progress and regular updates.
+
+### Team Structure
+
+At the beginning of the project, the class was divided into several teams, each responsible for different aspects of the application:
+| Message Team | File Team | Voice Team |
+|--------------|-----------|------------|
+| 5 students | 5 students | 5 students |
+| Responsible for developing the messaging functionalities, including sending and receiving text messages in real time. | Responsible for developing the file sharing functionalities, allowing users to upload and download files in channels. | Responsible for developing the voice channel functionalities, enabling users to communicate via voice in real time. |
+
+After this short period, the teams were reorganized to focus on the integration of all functionalities into a single cohesive application. We created Gitlab issues to track the progress of each feature and ensure that all teams were aligned with the overall project goals. Each issues had a status:
+| Status | Description |
+|--------|-------------|
+| To Develop | The feature needs to be developed by the team. |
+| To Accept | The issue has been described and needs to be accepted by the team before development begins. |
+| Ready | The feature is ready to be developed by the team. |
+| In Progress (WIP) | The feature is currently being developed by the team. |
+| In Review | The feature has been implemented and is awaiting review by the team. |
+| Done | The feature has been successfully implemented and is ready for deployment. |
+
+When a feature is in the 'In Review' status, it requires two approvals from team members before it can be marked as 'Done' and merged. To facilitate this process, a team member created a Discord bot that assigns reviewers. If a reviewer does not accept the task within five minutes, the bot automatically selects another student to conduct the review.
+
+## Architecture
+
+The architecture of Beep is designed to be scalable, maintainable, and robust. Key components include:
+
+- **Containerization:** Docker
+- **Orchestration:** Kubernetes
+- **CI/CD Pipeline:** GitLab CI
+- **Deployments:** ArgoCD
+- **Monitoring and Logging:** Grafana, Prometheus, and Loki
+
+This setup ensures that Beep can handle a large number of users and provide a reliable service with minimal downtime.
+
+## Future Enhancements
+
+Our roadmap for Beep includes several exciting features and improvements:
+
+- **Bot Integration:** Allowing users to create and integrate bots for various functionalities.
+- **Enhanced Security:** Implementing advanced security measures to protect user data.
+- **Mobile App:** Developing a mobile application for on-the-go access.
+
+## Conclusion
+
+Beep is more than just a project; it's a testament to the skills and dedication of the Polytech Montpellier DevOps class of 2023-2026. We are excited to continue developing this platform and look forward to the positive impact it will have on communication and collaboration.
