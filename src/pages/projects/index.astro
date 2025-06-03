@@ -1,9 +1,9 @@
 ---
-import ProjectCard from "@/components/elements/project-card";
 import ProjectLayout from "@/layouts/ProjectLayout.astro";
 import { getCollection } from "astro:content";
+import ProjectList from "@/components/elements/project-list";
 
-const projects = (await getCollection("project", (post) => {
+const projectsCollection = (await getCollection("project", (post) => {
 	if (import.meta.env.DEV) {
 		return true;
 	}
@@ -18,6 +18,8 @@ const projects = (await getCollection("project", (post) => {
 })).sort((a, b) => {
 	return a.data.publishedAt && b.data.publishedAt ? new Date(b.data.publishedAt).getTime() - new Date(a.data.publishedAt).getTime() : 0;
 });
+
+
 ---
 
 <ProjectLayout>
@@ -38,16 +40,5 @@ const projects = (await getCollection("project", (post) => {
 		</div>
 	</div>
 
-	<div class="text-lg sm:text-xl/8 text-(--ui-text-muted) text-pretty mt-0 sm:mt-6">
-		<div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-			{projects.map((project) => <ProjectCard project={project} />)}
-		</div>
-		{
-			projects.length === 0 && (
-				<p class="text-center text-muted-foreground mt-4">
-					No projects found.
-				</p>
-			)
-		}
-	</div>
+	<ProjectList projectsCollection={projectsCollection} client:load />
 </ProjectLayout>
