@@ -84,6 +84,9 @@
         "isDisplayedOnHomepage": {
           "type": "boolean",
           "default": true
+        },
+        "$schema": {
+          "type": "string"
         }
       },
       "required": [

@@ -2,10 +2,10 @@
 title: "Plannify"
 description: "Plannify is a web application that allows truck drivers to enter their days and generate personalized reports. It will also aim to provide a connection with the employer to facilitate the management of working hours, tournees, and more."
 permalink: "plannify"
-logo: '/images/project/plannify.png'
+logo: '/images/project/plannify/logo.png'
 contributors:
   - baptiste_bronsin
-publishedAt: 2025-01-01
+publishedAt: 2025-06-04
 tags:
   - web
   - react
@@ -17,28 +17,123 @@ tags:
   - minio
   - docker
   - kubernetes
+  - mail server
   - gitlab ci
   - argocd
   - helm
+  - cronjob
 links:
   website: https://app.plannify.be
   gitlab: https://gitlab.com/plannify-group
 status: active
 type: personnal
 license: "AGPL-3.0"
-isAvailable: false
+isAvailable: true
 isDisplayedOnHomepage: true
 ---
 
-# Welcome to Explainer
+# A truck driver application
 
-Explainer is a documentation boilerplate designed to help you create beautiful, responsive, and accessible web documentation using [Astro](https://astro.build). This project combines the power of Astro with [Tailwind CSS](https://tailwindcss.com) and [TypeScript](https://www.typescriptlang.org) to provide a smooth development experience.
+Plannify is a web application designed specifically for truck drivers, enabling them to log their daily activities and generate personalized reports. The platform also aims to facilitate communication with employers, streamlining the management of working hours, routes, and other essential tasks.
 
-## Why Explainer?
+## Why is it a personal project ?
 
-Documentation is often overlooked, but it's essential for the adoption and effective use of your project.
-Explainer fills an important gap in the technical documentation ecosystem. While Vue has robust solutions like Vitepress, the React ecosystem suffers from a lack of alternatives that don't depend on Next.js. Most documentation frameworks for React are closely tied to Next.js, which can be limiting for many projects.
+When I was in my second year of university, my father asked me to print blank papers with a specific format for his truck driver activities. As a programmer, I thought it would be more efficient to create a web application that could generate these reports automatically. This idea led to the development of Plannify, which has since evolved into a comprehensive tool for truck drivers.
 
-This is where Astro, and by extension Explainer, particularly shines. Astro offers remarkable flexibility by allowing you to integrate any technological component related to your business. You can easily incorporate React, Vue, Svelte components, or even standard web elements according to your specific needs.
+Today, Plannify has daily users and is actively used by my father and his colleagues. The application continues to grow, with plans to add more features and improve the user experience.
 
-This agnostic approach allows you to create documentation that perfectly aligns with your existing technology stack, without forcing you to adopt a particular ecosystem. Whether you work with React, Vue, or other frameworks, Explainer adapts to your needs rather than the other way around.
+## Features
+
+The main features of Plannify include:
+- **Daily Activity Logging**: Truck drivers can easily enter their daily activities, including working hours, rest periods and overnight stays.
+  | Attribute | Type | Description |
+  |-----------|------|-------------|
+  | `date`    | date | The date of the day |
+  | `startTime` | hour | The start time of the day |
+  | `endTime` | hour or undefined | The end time of the day |
+  | `restTime` | hour | The total rest time taken during the day |
+  | `overnightStay` | boolean | Indicates whether the driver stayed overnight |
+
+- **Report Generation**: Users can generate monthly reports based on their logged activities, which can be exported in PDF format.
+- **Employer Connection** (_currently in development_): The application aims to provide a connection with employers, allowing them to manage working hours, routes, and other relevant information more efficiently.
+- **User-Friendly Application**: Plannify is designed to be intuitive and easy to use, ensuring that truck drivers can quickly log their activities without any hassle. And I think human must be at the center of the application, so I try to make it as simple as possible without hidding weird behaviors.
+
+## Technologies Used
+
+Plannify is built using modern web technologies, including:
+- **Frontend**: React, TypeScript, and TailwindCSS for a responsive and user-friendly interface.
+- **Backend**: NestJS with Prisma and PostgreSQL for robust data management and server-side logic.
+- **File Storage**: MinIO for secure file storage and management.
+- **Containerization**: Docker for easy deployment and scalability.
+- **Orchestration**: Kubernetes for managing containerized applications and ensuring high availability.
+- **CI/CD**: GitLab CI for continuous integration and deployment, ensuring that updates are rolled out smoothly.
+- **Monitoring**: Argocd and Helm for managing deployments and scheduled tasks.
+- **Email Notifications**: A mail server for sending notifications and updates to users.
+- **Cron Jobs**: Scheduled tasks for automated report generation, account management and other periodic activities.
+
+<div className='grid grid-rows-2 grid-cols-2 sm:grid-rows-1 sm:grid-cols-4 gap-4 w-full'>
+  <img src="/images/project/plannify/dashboard-1.png" alt="Plannify home dashboard" />
+  <img src="/images/project/plannify/dashboard-2.png" alt="Plannify workday dashboard" />
+  <img src="/images/project/plannify/dashboard-3.png" alt="Plannify reports dashboard" />
+  <img src="/images/project/plannify/dashboard-4.png" alt="Plannify account dashboard" />
+</div>
+
+I also used the PWA (Progressive Web App) features to allow users to install the application on their devices and use it as a native mobile application.
+
+## Automation and Deployment
+
+### Environments
+
+I have set up multiple environments for Plannify to ensure smooth development, testing, and production processes:
+- **Staging**: A staging environment for testing new features and updates before they go live.
+- **Production**: The live environment where users access the application.
+
+### CI
+
+Plannify uses GitLab CI for continuous integration, ensuring that code changes are automatically tested and deployed. 
+
+For the frontend, I have a pipeline that checks the code quality (linting), builds the application and stores the build artifacts in the GitLab registry. For the backend, like the frontend, I have the same pipeline and I also run the tests to ensure that everything is working as expected.
+
+<div>
+  <img className='max-w-[100%] object-contain' src="/images/project/plannify/backend-pipeline.png" alt="Plannify backend pipeline" />
+</div>
+
+### CD
+
+For continuous deployment, I use ArgoCD to manage the deployment of the application to the staging and production environments. This allows for automated rollouts and rollbacks, ensuring that updates are deployed smoothly without downtime. Thats allows me to pratice the GitOps principles.
+
+<div>
+  <img className='max-w-[100%] object-contain' src="/images/project/plannify/argocd.png" alt="Plannify argocd operator" />
+</div>
+
+### Helm
+
+I use Helm to manage the Kubernetes deployments of Plannify. Helm charts allow me to define, install, and upgrade the application in a consistent manner across different environments. This simplifies the deployment process and ensures that all dependencies are managed effectively.
+
+## Automations
+
+### Sending Reports
+
+I have implemented a kubernetes cron job to automate the generation and sending of reports. This job runs at the beginning of each month, generating reports for users who agreed to receive them. The reports are then sent via email, ensuring that users have access to their activity summaries without needing to manually generate them.
+
+### Account Management
+
+I have also set up a cron job to manage user accounts. This job runs daily and delete accounts that have not been logged into for more than 6 months. This helps maintain the application's performance and ensures that user data is managed responsibly.
+
+### Backups
+
+Data backups are crucial for any application, and Plannify is no exception. I have implemented a backup strategy that includes:
+- **Database Backups**: Regular backups of the PostgreSQL database to ensure that user data is safe and can be restored in case of any issues.
+- **File Storage Backups**: Backups of files stored in MinIO to prevent data loss in case of hardware failures or other issues.
+
+Each backup is stored securely in a separate location to ensure data integrity and availability. I also have a cron job that runs daily to create these backups, ensuring that the application can recover quickly in case of any unexpected events.
+
+## Future Plans
+
+I want to continue improving Plannify and add a link between employers and employees. This will allow a better visibility for truck drivers and their daily activities, and will also help employers manage their workforce more effectively.
+
+I also plan to continue offering the application for free and without any ads, as I believe it's important to provide a valuable tool for truck drivers without any financial barriers.
+
+## Conclusion
+
+Plannify is my main personal project, and I'm proud of the progress it has made since its inception. The application has evolved from a simple idea into a comprehensive tool that is actively used by truck drivers. I'm excited about the future of Plannify and the potential it has to make a positive impact on the lives of truck drivers.
