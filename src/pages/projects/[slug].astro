@@ -77,6 +77,25 @@ function buildHeadingTree(headings: typeof availableHeadings): HeadingNode[] {
 }
 
 const headingTree = buildHeadingTree(availableHeadings);
+
+const links = element.data.links && (element.data.links.website || element.data.links.github || element.data.links.gitlab) ? [
+	{
+		name: "Website",
+		icon: Earth,
+		href: element.data.links.website,
+	},
+	{
+		name: "Github",
+		icon: Github,
+		href: element.data.links.github,
+	},
+	{
+		name: "Gitlab",
+		icon: Gitlab,
+		href: element.data.links.gitlab,
+	},
+].filter(link => link.href) : []
+
 ---
 
 <ProjectLayout title={element.data.title} description={element.data.description} thumbnail={{ image: element.data.logo, alt: element.data.title, width: 64, height: 64 }}>
@@ -233,15 +252,28 @@ const headingTree = buildHeadingTree(availableHeadings);
 					</ul>
 
 					{
-						element.data.links && (element.data.links.website || element.data.links.github || element.data.links.gitlab) && (
+						links.length > 0 && (
 							<>
-								<p class="group text-sm font-semibold flex-1 items-center gap-1.5 mt-8 focus-visible:outline-primary hidden lg:flex">
+								<p class="group text-sm font-semibold flex-1 items-center gap-1.5 mt-8 mb-2 focus-visible:outline-primary hidden lg:flex">
 									<span class="truncate">Links</span>
 								</p>
 								<ul class="min-w-0">
-									{element.data.links.github && <li class="mt-2"><a href={element.data.links.github} class="flex flex-row items-center gap-2" target='_blank'><Github className="inline w-6 h-6 text-foreground" />Github</a></li>}
-                					{element.data.links.gitlab && <li class="mt-2"><a href={element.data.links.gitlab} class="flex flex-row items-center gap-2" target='_blank'><Gitlab className="inline w-6 h-6 text-foreground" />Gitlab</a></li>}
-									{element.data.links.website && <li class="mt-2"><a href={element.data.links.website} class="flex flex-row items-center gap-2" target='_blank'><Earth className="inline w-6 h-6 text-foreground" />Website</a></li>}
+									{
+										links.map((link) => (
+											<li class="mt text-sm">
+												<div class="inline-block">
+													<a
+														href={link.href}
+														class="flex flex-row items-center gap-2 hover:underline"
+														target="_blank"
+													>
+														<link.icon className="inline w-4 h-4 text-foreground" />
+														{link.name}
+													</a>
+												</div>
+											</li>
+										))
+									}
 								</ul>
 							</>
 						)
