@@ -1,0 +1,67 @@
+---
+title: "Postgres Backup"
+description: "Postgres Backup is a personal project that allows you to backup PostgreSQL databases to a S3 compatible storage."
+permalink: "postgres-backup"
+# logo: 
+contributors:
+  - baptiste_bronsin
+publishedAt: 2025-07-03
+tags:
+  - postgresql
+  - bash
+  - minio
+  - S3
+  - docker
+  - kubernetes
+  - cronjob
+links:
+  github: https://github.com/baptistebronsin/postgres-backup
+status: active
+type: personnal
+license: "AGPL-3.0"
+isAvailable: true
+isDisplayedOnHomepage: true
+---
+
+# A database backup solution for PostgreSQL
+
+I work on many projects that use PostgreSQL and I needed a simple way to back up my databases. Initially, I connected manually to each database and used the `pg_dump` command to create backup files. This process quickly became tedious and error-prone, especially when managing multiple databases on a recurring schedule. Sometimes I even forgot to run the backups because I had other things to do on my Sundays ☀️.
+
+## Features
+
+This project is designed to run in containerized environments (docker compose and kubernetes) and can be automated using cron jobs. It allows you to backup your PostgreSQL databases to a S3 compatible storage, such as MinIO, AWS S3, Cloudflare R2, etc.
+
+To be used in every project, this script is designed to be flexible and easy to configure. You can specify the databases you want to backup, the compression algorithm and the storage location.
+
+## Arguments
+
+| Variable | Description | Required | Example |
+| --- | --- | --- | --- |
+| DB_HOST | The host of the database | yes | postgres |
+| DB_PORT | The port of the database | yes | 5432 |
+| DB_USER | The user of the database | yes | postgres |
+| DB_PASSWORD | The password of the database | yes | postgres |
+| DB_NAME | The name of the database | yes | plannify |
+| --- | --- | --- |
+| BACKUP_DIR | The directory of the backup | no | 'daily', 'weekly', 'monthly' |
+| BACKUP_MAX_BEFORE_DELETE | The maximum number of backup before deleting the oldest one | no | 7 |
+| BACKUP_COMPRESSION | The compression method to use for the backup file (no compression by default) | no | gzip, xz |
+| --- | --- | --- |
+| S3_ENDPOINT | The bucket endpoint | yes | https://... |
+| S3_ACCESS_TOKEN | The access token of your provider account | yes | 1234567890 |
+| S3_SECRET_ACCESS_TOKEN | The secret access token of your provider account | yes | 1234567890 |
+| S3_BUCKET | The S3 bucket of your account | yes | plannify |
+
+## Technologies Used
+
+This project is built using basic Bash scripting and Docker to create a containerized backup solution that can easily run in any environment.
+
+## Dockerfile
+
+The Dockerfile is based on the official Postgres image and includes all necessary dependencies to run the backup script.
+
+The container runs as a specific user, `backupuser`, who has the required permissions to access the database and perform backups securely.
+
+## CI
+
+A basic GitHub Action CI pipeline is configured to build the Docker image on each tag push.
