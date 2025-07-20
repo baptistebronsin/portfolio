@@ -11,8 +11,8 @@ front:
 
   ingress:
     enabled: true
+    className: traefik
     annotations:
-      spec.ingressClassName: traefik
       cert-manager.io/cluster-issuer: letsencrypt-prod
       traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
     hosts: baptistebronsin.be
