@@ -5,9 +5,15 @@ metadata:
   namespace: {{ .Values.namespace }}
 spec:
   replicas: {{ .Values.front.replicaCount }}
+  revisionHistoryLimit: 1
   selector:
     matchLabels:
       app: {{ .Values.front.name }}
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
   template:
     metadata:
       labels:
@@ -16,6 +22,32 @@ spec:
       containers:
       - name: {{ .Values.front.name }}
         image: {{ .Values.front.image }}
+        imagePullPolicy: Always
+        resources:
+          requests:
+            cpu: "4m"
+            memory: "8Mi"
+          limits:
+            cpu: "12m"
+            memory: "12Mi"
         ports: 
         - containerPort: {{ .Values.front.port }}
-  revisionHistoryLimit: 1
+        startupProbe:
+          httpGet:
+            path: /
+            port: {{ .Values.front.port }}
+          failureThreshold: 30
+          periodSeconds: 10
+        livenessProbe:
+          httpGet:
+            path: /
+            port: {{ .Values.front.port }}
+          failureThreshold: 3
+          initialDelaySeconds: 10
+          periodSeconds: 20
+        readinessProbe:
+          httpGet:
+            path: /
+            port: {{ .Values.front.port }}
+          initialDelaySeconds: 5
+          periodSeconds: 10
