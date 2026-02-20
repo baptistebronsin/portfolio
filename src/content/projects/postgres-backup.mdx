@@ -2,7 +2,7 @@
 title: "Postgres Backup"
 description: "Postgres Backup is a personal project that allows you to backup PostgreSQL databases to a S3 compatible storage."
 permalink: "postgres-backup"
-# logo: 
+# logo:
 contributors:
   - baptiste_bronsin
 publishedAt: 2025-07-03
@@ -17,7 +17,7 @@ tags:
 links:
   github: https://github.com/baptistebronsin/postgres-backup
 status: active
-type: personnal
+type: personal
 license: "AGPL-3.0"
 isAvailable: true
 isDisplayedOnHomepage: true
@@ -35,22 +35,22 @@ To be used in every project, this script is designed to be flexible and easy to 
 
 ## Arguments
 
-| Variable | Description | Required | Example |
-| --- | --- | --- | --- |
-| DB_HOST | The host of the database | yes | postgres |
-| DB_PORT | The port of the database | yes | 5432 |
-| DB_USER | The user of the database | yes | postgres |
-| DB_PASSWORD | The password of the database | yes | postgres |
-| DB_NAME | The name of the database | yes | plannify |
-| --- | --- | --- |
-| BACKUP_DIR | The directory of the backup | no | 'daily', 'weekly', 'monthly' |
-| BACKUP_MAX_BEFORE_DELETE | The maximum number of backup before deleting the oldest one | no | 7 |
-| BACKUP_COMPRESSION | The compression method to use for the backup file (no compression by default) | no | gzip, xz |
-| --- | --- | --- |
-| S3_ENDPOINT | The bucket endpoint | yes | https://... |
-| S3_ACCESS_TOKEN | The access token of your provider account | yes | 1234567890 |
-| S3_SECRET_ACCESS_TOKEN | The secret access token of your provider account | yes | 1234567890 |
-| S3_BUCKET | The S3 bucket of your account | yes | plannify |
+| Variable                 | Description                                                                   | Required | Example                      |
+| ------------------------ | ----------------------------------------------------------------------------- | -------- | ---------------------------- |
+| DB_HOST                  | The host of the database                                                      | yes      | postgres                     |
+| DB_PORT                  | The port of the database                                                      | yes      | 5432                         |
+| DB_USER                  | The user of the database                                                      | yes      | postgres                     |
+| DB_PASSWORD              | The password of the database                                                  | yes      | postgres                     |
+| DB_NAME                  | The name of the database                                                      | yes      | plannify                     |
+| ---                      | ---                                                                           | ---      |
+| BACKUP_DIR               | The directory of the backup                                                   | no       | 'daily', 'weekly', 'monthly' |
+| BACKUP_MAX_BEFORE_DELETE | The maximum number of backup before deleting the oldest one                   | no       | 7                            |
+| BACKUP_COMPRESSION       | The compression method to use for the backup file (no compression by default) | no       | gzip, xz                     |
+| ---                      | ---                                                                           | ---      |
+| S3_ENDPOINT              | The bucket endpoint                                                           | yes      | https://...                  |
+| S3_ACCESS_TOKEN          | The access token of your provider account                                     | yes      | 1234567890                   |
+| S3_SECRET_ACCESS_TOKEN   | The secret access token of your provider account                              | yes      | 1234567890                   |
+| S3_BUCKET                | The S3 bucket of your account                                                 | yes      | plannify                     |
 
 ## Technologies Used
 

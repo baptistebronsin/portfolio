@@ -2,7 +2,7 @@
 title: "Plannify"
 description: "Plannify is a web application that allows truck drivers to enter their days and generate personalized reports. It will also aim to provide a connection with the employer to facilitate the management of working hours, tournees, and more."
 permalink: "plannify"
-logo: '/images/project/plannify/logo.png'
+logo: "/images/project/plannify/logo.png"
 contributors:
   - baptiste_bronsin
 publishedAt: 2025-06-03
@@ -26,7 +26,7 @@ links:
   website: https://app.plannify.be
   gitlab: https://gitlab.com/plannify-group
 status: active
-type: personnal
+type: personal
 license: "AGPL-3.0"
 isAvailable: true
 isDisplayedOnHomepage: true
@@ -45,10 +45,11 @@ Today, Plannify has daily users and is actively used by my father and his collea
 ## Features
 
 The main features of Plannify include:
+
 - **Daily Activity Logging**: Truck drivers can easily enter their daily activities, including working hours, rest periods and overnight stays.
   | Attribute | Type | Description |
   |-----------|------|-------------|
-  | `date`    | date | The date of the day |
+  | `date` | date | The date of the day |
   | `startTime` | hour | The start time of the day |
   | `endTime` | hour or undefined | The end time of the day |
   | `restTime` | hour | The total rest time taken during the day |
@@ -61,6 +62,7 @@ The main features of Plannify include:
 ## Technologies Used
 
 Plannify is built using modern web technologies, including:
+
 - **Frontend**: React, TypeScript, and TailwindCSS for a responsive and user-friendly interface.
 - **Backend**: NestJS with Prisma and PostgreSQL for robust data management and server-side logic.
 - **File Storage**: MinIO for secure file storage and management.
@@ -71,11 +73,23 @@ Plannify is built using modern web technologies, including:
 - **Email Notifications**: A mail server for sending notifications and updates to users.
 - **Cron Jobs**: Scheduled tasks for automated report generation, account management and other periodic activities.
 
-<div className='grid grid-rows-2 grid-cols-2 sm:grid-rows-1 sm:grid-cols-4 gap-4 w-full'>
-  <img src="/images/project/plannify/dashboard-1.png" alt="Plannify home dashboard" />
-  <img src="/images/project/plannify/dashboard-2.png" alt="Plannify workday dashboard" />
-  <img src="/images/project/plannify/dashboard-3.png" alt="Plannify reports dashboard" />
-  <img src="/images/project/plannify/dashboard-4.png" alt="Plannify account dashboard" />
+<div className="grid grid-rows-2 grid-cols-2 sm:grid-rows-1 sm:grid-cols-4 gap-4 w-full">
+  <img
+    src="/images/project/plannify/dashboard-1.png"
+    alt="Plannify home dashboard"
+  />
+  <img
+    src="/images/project/plannify/dashboard-2.png"
+    alt="Plannify workday dashboard"
+  />
+  <img
+    src="/images/project/plannify/dashboard-3.png"
+    alt="Plannify reports dashboard"
+  />
+  <img
+    src="/images/project/plannify/dashboard-4.png"
+    alt="Plannify account dashboard"
+  />
 </div>
 
 I also used the PWA (Progressive Web App) features to allow users to install the application on their devices and use it as a native mobile application.
@@ -85,17 +99,22 @@ I also used the PWA (Progressive Web App) features to allow users to install the
 ### Environments
 
 I have set up multiple environments for Plannify to ensure smooth development, testing, and production processes:
+
 - **Staging**: A staging environment for testing new features and updates before they go live.
 - **Production**: The live environment where users access the application.
 
 ### CI
 
-Plannify uses GitLab CI for continuous integration, ensuring that code changes are automatically tested and deployed. 
+Plannify uses GitLab CI for continuous integration, ensuring that code changes are automatically tested and deployed.
 
 For the frontend, I have a pipeline that checks the code quality (linting), builds the application and stores the build artifacts in the GitLab registry. For the backend, like the frontend, I have the same pipeline and I also run the tests to ensure that everything is working as expected.
 
 <div>
-  <img className='max-w-[100%] object-contain' src="/images/project/plannify/backend-pipeline.png" alt="Plannify backend pipeline" />
+  <img
+    className="max-w-[100%] object-contain"
+    src="/images/project/plannify/backend-pipeline.png"
+    alt="Plannify backend pipeline"
+  />
 </div>
 
 ### CD
@@ -103,7 +122,11 @@ For the frontend, I have a pipeline that checks the code quality (linting), buil
 For continuous deployment, I use ArgoCD to manage the deployment of the application to the staging and production environments. This allows for automated rollouts and rollbacks, ensuring that updates are deployed smoothly without downtime. Thats allows me to pratice the GitOps principles.
 
 <div>
-  <img className='max-w-[100%] object-contain' src="/images/project/plannify/argocd.png" alt="Plannify argocd operator" />
+  <img
+    className="max-w-[100%] object-contain"
+    src="/images/project/plannify/argocd.png"
+    alt="Plannify argocd operator"
+  />
 </div>
 
 ### Helm
@@ -123,6 +146,7 @@ I have also set up a cron job to manage user accounts. This job runs daily and d
 ### Backups
 
 Data backups are crucial for any application, and Plannify is no exception. I have implemented a backup strategy that includes:
+
 - **Database Backups**: Regular backups of the PostgreSQL database to ensure that user data is safe and can be restored in case of any issues.
 - **File Storage Backups**: Backups of files stored in MinIO to prevent data loss in case of hardware failures or other issues.
 

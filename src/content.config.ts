@@ -19,11 +19,11 @@ const project = defineCollection({
       })
       .optional(),
     status: z.enum(["active", "inactive", "archived"]).optional(),
-    type: z.enum(["personnal", "university"]).optional(),
+    type: z.enum(["personal", "university"]).optional(),
     license: z.string().optional(),
     isAvailable: z.boolean().default(true),
     isDisplayedOnHomepage: z.boolean().default(true),
-  })
+  }),
 });
 
 const article = defineCollection({
@@ -38,6 +38,6 @@ const article = defineCollection({
     isAvailable: z.boolean().default(true),
     isDisplayedOnHomepage: z.boolean().default(true),
   }),
-})
+});
 
 export const collections = { article, project };
