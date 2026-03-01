@@ -6,9 +6,9 @@ export default new Map([
 ["src/content/articles/how-to-avoid-too-many-a-and-aaaa-dns-records-in-your-dns-zone-file.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Farticles%2Fhow-to-avoid-too-many-a-and-aaaa-dns-records-in-your-dns-zone-file.mdx&astroContentModuleFlag=true")],
 ["src/content/projects/beep.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fprojects%2Fbeep.mdx&astroContentModuleFlag=true")],
 ["src/content/projects/opensource.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fprojects%2Fopensource.mdx&astroContentModuleFlag=true")],
-["src/content/projects/plannify.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fprojects%2Fplannify.mdx&astroContentModuleFlag=true")],
-["src/content/projects/polyclount.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fprojects%2Fpolyclount.mdx&astroContentModuleFlag=true")],
 ["src/content/projects/operator-price.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fprojects%2Foperator-price.mdx&astroContentModuleFlag=true")],
+["src/content/projects/plannify.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fprojects%2Fplannify.mdx&astroContentModuleFlag=true")],
 ["src/content/projects/portfolio.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fprojects%2Fportfolio.mdx&astroContentModuleFlag=true")],
-["src/content/projects/postgres-backup.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fprojects%2Fpostgres-backup.mdx&astroContentModuleFlag=true")]]);
+["src/content/projects/postgres-backup.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fprojects%2Fpostgres-backup.mdx&astroContentModuleFlag=true")],
+["src/content/projects/polyclount.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fprojects%2Fpolyclount.mdx&astroContentModuleFlag=true")]]);
 		
